@@ -21,10 +21,29 @@ import type { AgentId } from "../types";
 import { elementsToMarkdown } from "../utils/unstructured";
 import type { Graph } from "./types";
 
+const flushMetricsAndShutdown = async (lf: Langfuse, metricReader: any) => {
+	return new Promise<void>((resolve, reject) => {
+		const timeoutId = setTimeout(() => {
+			reject(new Error("Metric flush timeout after 20 seconds"));
+		}, 20000);
+
+		Promise.all([metricReader.forceFlush(), lf.shutdownAsync()])
+			.then(() => {
+				clearTimeout(timeoutId);
+				resolve();
+			})
+			.catch((error) => {
+				clearTimeout(timeoutId);
+				reject(error);
+			});
+	});
+};
+
 type GenerateArtifactStreamParams = {
 	userPrompt: string;
 	systemPrompt?: string;
 };
+
 export async function generateArtifactStream(
 	params: GenerateArtifactStreamParams,
 ) {
@@ -56,16 +75,24 @@ export async function generateArtifactStream(
 					subscriptionId,
 					isR06User,
 				});
+				waitUntil(
+					flushMetricsAndShutdown(lf, metricReader).catch((error) => {
+						if (error.message === "Metric flush timeout after 20 seconds") {
+							console.error(
+								"Metric flush and Langfuse shutdown timed out:",
+								error,
+							);
+						} else {
+							console.error(
+								"Error during metric flush and Langfuse shutdown:",
+								error,
+							);
+						}
+					}),
+				);
 				generation.end({
 					output: result,
 				});
-
-				waitUntil(
-					metricReader.forceFlush().catch((error) => {
-						console.error("Failed to flush metrics:", error);
-					}),
-				);
-				await lf.shutdownAsync();
 			},
 		});
 
