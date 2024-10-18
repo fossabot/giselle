@@ -27,6 +27,7 @@ const flushMetricsAndShutdown = async (lf: Langfuse, metricReader: any) => {
 			reject(new Error("Metric flush timeout after 20 seconds"));
 		}, 20000);
 
+                console.log("inside waitUntil()-----")
 		Promise.all([metricReader.forceFlush(), lf.shutdownAsync()])
 			.then(() => {
 				clearTimeout(timeoutId);
@@ -75,6 +76,7 @@ export async function generateArtifactStream(
 					subscriptionId,
 					isR06User,
 				});
+                          console.log("before waitUntil()-----")
 				waitUntil(
 					flushMetricsAndShutdown(lf, metricReader).catch((error) => {
 						if (error.message === "Metric flush timeout after 20 seconds") {
@@ -90,6 +92,7 @@ export async function generateArtifactStream(
 						}
 					}),
 				);
+                          console.log("after waitUntil()-----")
 				generation.end({
 					output: result,
 				});
@@ -104,6 +107,8 @@ export async function generateArtifactStream(
 
 		stream.done();
 	})();
+
+        console.log("before return-----")
 
 	return { object: stream.value };
 }
