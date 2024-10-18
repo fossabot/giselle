@@ -10,4 +10,6 @@ export async function register() {
 	}
 }
 
+// to create deployment
+
 export const onRequestError = Sentry.captureRequestError;
