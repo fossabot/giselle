@@ -2,6 +2,7 @@
 
 import { metricReader } from "@/instrumentation";
 import { openai } from "@ai-sdk/openai";
+import { waitUntil } from "@vercel/functions";
 import { streamObject } from "ai";
 import { createStreamableValue } from "ai/rsc";
 import { UnstructuredClient } from "unstructured-client";
@@ -59,7 +60,11 @@ export async function generateArtifactStream(
 					output: result,
 				});
 
-				Promise.all([metricReader.forceFlush()]);
+				waitUntil(
+					metricReader.forceFlush().catch((error) => {
+						console.error("Failed to flush metrics:", error);
+					}),
+				);
 				await lf.shutdownAsync();
 			},
 		});
