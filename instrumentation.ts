@@ -3,21 +3,22 @@ import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
 import * as Sentry from "@sentry/nextjs";
 import { registerOTel } from "@vercel/otel";
 
+export const metricReader = new PeriodicExportingMetricReader({
+	exporter: new OTLPMetricExporter({
+		url: "https://ingest.us.signoz.cloud:443/v1/metrics",
+		headers: {
+			"signoz-access-token": process.env.SIGNOZ_INGESTION_TOKEN,
+		},
+	}),
+});
+
 export async function register() {
 	registerOTel({
 		serviceName: "giselle",
 		attributes: {
 			environment: process.env.VERCEL_ENV || "not-set",
 		},
-		metricReader: new PeriodicExportingMetricReader({
-			exporter: new OTLPMetricExporter({
-				url: "https://ingest.us.signoz.cloud:443/v1/metrics",
-				headers: {
-					"signoz-access-token": process.env.SIGNOZ_INGESTION_TOKEN,
-				},
-			}),
-			exportIntervalMillis: 10000,
-		}),
+		metricReader: metricReader,
 	});
 
 	if (process.env.NEXT_RUNTIME === "nodejs") {
