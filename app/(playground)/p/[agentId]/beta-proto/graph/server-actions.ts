@@ -24,17 +24,29 @@ import type { Graph } from "./types";
 const flushMetricsAndShutdown = async (lf: Langfuse, metricReader: any) => {
 	return new Promise<void>((resolve, reject) => {
 		const timeoutId = setTimeout(() => {
+			console.log("forceFlush: Timeout (Rejected)");
 			reject(new Error("Metric flush timeout after 20 seconds"));
 		}, 20000);
 
-		console.log("inside waitUntil()-----");
-		Promise.all([metricReader.forceFlush(), lf.shutdownAsync()])
+		console.log("forceFlush: Starting (Pending)");
+
+		const forceFlushPromise = metricReader.forceFlush();
+		const shutdownPromise = lf.shutdownAsync();
+
+		forceFlushPromise.then(
+			() => console.log("forceFlush: Completed (Fulfilled)"),
+			(error: Error) => console.log("forceFlush: Error (Rejected)", error),
+		);
+
+		Promise.all([forceFlushPromise, shutdownPromise])
 			.then(() => {
 				clearTimeout(timeoutId);
+				console.log("All operations completed successfully");
 				resolve();
 			})
 			.catch((error) => {
 				clearTimeout(timeoutId);
+				console.log("Error in operations", error);
 				reject(error);
 			});
 	});
