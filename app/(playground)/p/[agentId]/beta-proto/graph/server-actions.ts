@@ -1,5 +1,6 @@
 "use server";
 
+import { metricReader } from "@/instrumentation";
 import { openai } from "@ai-sdk/openai";
 import { streamObject, TokenUsage } from "ai";
 import { createStreamableValue } from "ai/rsc";
@@ -68,6 +69,8 @@ export async function generateArtifactStream(
 				generation.end({
 					output: result,
 				});
+
+				Promise.all([metricReader.forceFlush()]);
 				await lf.shutdownAsync();
 			},
 		});
