@@ -77,14 +77,15 @@ export async function generateArtifactStream(
 			system: params.systemPrompt ?? "You generate an answer to a question. ",
 			prompt: params.userPrompt,
 			schema: artifactSchema,
-			onFinish: async (result) => {
+			onFinish: async (usage) => {
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
 					description: "Number of OpenAI API tokens consumed by each request",
 				});
 				const subscriptionId = await getUserSubscriptionId();
 				const isR06User = await isRoute06User();
-				tokenCounter.add(result.usage.totalTokens, {
+                                console.log("Token usage:", usage);
+				tokenCounter.add(usage.totalTokens, {
 					subscriptionId,
 					isR06User,
 				});
