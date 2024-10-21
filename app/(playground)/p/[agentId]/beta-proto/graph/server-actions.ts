@@ -77,6 +77,9 @@ export async function generateArtifactStream(
 			system: params.systemPrompt ?? "You generate an answer to a question. ",
 			prompt: params.userPrompt,
 			schema: artifactSchema,
+                        experimental_telemetry: {
+                          isEnabled: true,
+                        },
 			onFinish: async (usage) => {
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
