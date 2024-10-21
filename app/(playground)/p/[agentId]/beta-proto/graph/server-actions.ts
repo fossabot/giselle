@@ -74,8 +74,6 @@ export async function generateArtifactStream(
 					output: result,
 				});
 
-                                waitUntil(metricReader.forceFlush());
-
 				await lf.shutdownAsync();
 			},
 		});
