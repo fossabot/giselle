@@ -45,7 +45,7 @@ export async function generateArtifactStream(
 	});
 	const stream = createStreamableValue();
 
-	(async () => {
+	const streamingPromise = (async () => {
 		const model = "gpt-4o-mini";
 		const generation = trace.generation({
 			input: params.userPrompt,
@@ -70,8 +70,6 @@ export async function generateArtifactStream(
 				generation.end({
 					output: result,
 				});
-
-				await lf.shutdownAsync();
 			},
 		});
 
@@ -80,10 +78,22 @@ export async function generateArtifactStream(
 		}
 
 		result.usage.then(recordTokenUsage);
-		waitUntil(Promise.all([metricReader.forceFlush()]));
 
 		stream.done();
+                return result;
 	})();
+
+        const cleanupPromise = streamingPromise.then(async () => {
+            console.log("Starting cleanup...");
+            await lf.shutdownAsync();
+            console.log("Langfuse shutdown complete");
+            await metricReader.forceFlush();
+            console.log("Metric flush complete");
+        });
+
+        waitUntil(cleanupPromise);
+
+        await streamingPromise;
 
 	return { object: stream.value };
 }
