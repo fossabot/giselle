@@ -1,7 +1,7 @@
 "use server";
 
 import { openai } from "@ai-sdk/openai";
-import { streamObject } from "ai";
+import { streamObject, TokenUsage } from "ai";
 import { createStreamableValue } from "ai/rsc";
 import { UnstructuredClient } from "unstructured-client";
 
@@ -23,6 +23,17 @@ type GenerateArtifactStreamParams = {
 	userPrompt: string;
 	systemPrompt?: string;
 };
+
+function recordTokenUsage({
+	promptTokens,
+	completionTokens,
+	totalTokens,
+}: TokenUsage) {
+	console.log("Prompt tokens:", promptTokens);
+	console.log("Completion tokens:", completionTokens);
+	console.log("Total tokens:", totalTokens);
+}
+
 export async function generateArtifactStream(
 	params: GenerateArtifactStreamParams,
 ) {
@@ -38,7 +49,7 @@ export async function generateArtifactStream(
 			input: params.userPrompt,
 			model,
 		});
-		const { partialObjectStream, object } = await streamObject({
+		const result = await streamObject({
 			model: openai(model),
 			system: params.systemPrompt ?? "You generate an answer to a question. ",
 			prompt: params.userPrompt,
@@ -61,11 +72,11 @@ export async function generateArtifactStream(
 			},
 		});
 
-		for await (const partialObject of partialObjectStream) {
+		for await (const partialObject of result.partialObjectStream) {
 			stream.update(partialObject);
 		}
 
-		const result = await object;
+		result.usage.then(recordTokenUsage);
 
 		stream.done();
 	})();
