@@ -5,6 +5,7 @@ import { openai } from "@ai-sdk/openai";
 import { streamObject, TokenUsage } from "ai";
 import { createStreamableValue } from "ai/rsc";
 import { UnstructuredClient } from "unstructured-client";
+import { waitUntil} from "@vercel/functions"
 
 import { getUserSubscriptionId, isRoute06User } from "@/app/(auth)/lib";
 import { agents, db } from "@/drizzle";
@@ -70,7 +71,6 @@ export async function generateArtifactStream(
 					output: result,
 				});
 
-				Promise.all([metricReader.forceFlush()]);
 				await lf.shutdownAsync();
 			},
 		});
@@ -80,6 +80,7 @@ export async function generateArtifactStream(
 		}
 
 		result.usage.then(recordTokenUsage);
+		waitUntil(Promise.all([metricReader.forceFlush()]));
 
 		stream.done();
 	})();
