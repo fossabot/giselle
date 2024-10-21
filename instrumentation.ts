@@ -10,6 +10,7 @@ export const metricReader = new PeriodicExportingMetricReader({
 			"signoz-access-token": process.env.SIGNOZ_INGESTION_TOKEN,
 		},
 	}),
+        exportIntervalMillis: 10000,
 });
 
 export async function register() {
