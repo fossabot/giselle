@@ -81,6 +81,7 @@ export async function generateArtifactStream(
                           isEnabled: true,
                         },
 			onFinish: async (usage) => {
+                                console.log("onFinish-----");
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
 					description: "Number of OpenAI API tokens consumed by each request",
@@ -95,6 +96,20 @@ export async function generateArtifactStream(
 				generation.end({
 					output: result,
 				});
+
+                                console.log("before waitUntil()-----");
+                                waitUntil(
+                                        flushMetricsAndShutdown(lf, metricReader).catch((error) => {
+                                                if (error.message === "Metric flush timeout after 20 seconds") {
+                                                        console.error("Metric flush and Langfuse shutdown timed out:", error);
+                                                } else {
+                                                        console.error(
+                                                                "Error during metric flush and Langfuse shutdown:",
+                                                                error,
+                                                        );
+                                                }
+                                        }),
+                                );
 			},
 		});
 
@@ -109,19 +124,6 @@ export async function generateArtifactStream(
 
 	await processStream();
 
-	console.log("before waitUntil()-----");
-	waitUntil(
-		flushMetricsAndShutdown(lf, metricReader).catch((error) => {
-			if (error.message === "Metric flush timeout after 20 seconds") {
-				console.error("Metric flush and Langfuse shutdown timed out:", error);
-			} else {
-				console.error(
-					"Error during metric flush and Langfuse shutdown:",
-					error,
-				);
-			}
-		}),
-	);
 	console.log("returning");
 
 	return { object: stream.value };
