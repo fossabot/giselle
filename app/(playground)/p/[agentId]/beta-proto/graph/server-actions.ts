@@ -1,6 +1,6 @@
 "use server";
 
-import { metricReader } from "@/instrumentation";
+import { metricReader } from "@/instrumentation.node";
 import { openai } from "@ai-sdk/openai";
 import { streamObject, TokenUsage } from "ai";
 import { createStreamableValue } from "ai/rsc";
