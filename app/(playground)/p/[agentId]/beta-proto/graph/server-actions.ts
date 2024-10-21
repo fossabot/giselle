@@ -91,6 +91,8 @@ export async function generateArtifactStream(
             console.log("Metric flush complete");
         });
 
+
+        console.log("runtime:", process.env.NEXT_RUNTIME)
         waitUntil(cleanupPromise);
 
         await streamingPromise;
