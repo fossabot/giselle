@@ -26,6 +26,7 @@ type GenerateArtifactStreamParams = {
 export async function generateArtifactStream(
 	params: GenerateArtifactStreamParams,
 ) {
+	console.log("stream-------");
 	const lf = new Langfuse();
 	const trace = lf.trace({
 		id: `giselle-${Date.now()}`,
@@ -43,7 +44,9 @@ export async function generateArtifactStream(
 			system: params.systemPrompt ?? "You generate an answer to a question. ",
 			prompt: params.userPrompt,
 			schema: artifactSchema,
+			experimental_telemetry: { isEnabled: true },
 			onFinish: async (result) => {
+				console.log("onFinish-------");
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
 					description: "Number of OpenAI API tokens consumed by each request",
@@ -53,7 +56,9 @@ export async function generateArtifactStream(
 				tokenCounter.add(result.usage.totalTokens, {
 					subscriptionId,
 					isR06User,
+					environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
 				});
+				console.log("totalTokens:", result.usage.totalTokens);
 				generation.end({
 					output: result,
 				});
@@ -65,11 +70,15 @@ export async function generateArtifactStream(
 			stream.update(partialObject);
 		}
 
+		console.log("before await object -------");
 		const result = await object;
+		console.log("after await object -------");
 
+		console.log("after steam.done() -------");
 		stream.done();
 	})();
 
+	console.log("before return -------");
 	return { object: stream.value };
 }
 
