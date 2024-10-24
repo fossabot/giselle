@@ -22,6 +22,7 @@ import {
 	webSearchItemStatus,
 	webSearchStatus,
 } from "../web-search/types";
+import { type FlowActionId, flowStatuses } from "./types";
 
 type Source = Artifact | TextContent | StructuredData | WebSearchItem;
 interface GatherInstructionSourcesInput {
@@ -99,7 +100,7 @@ async function gatherInstructionSources(input: GatherInstructionSourcesInput) {
 
 interface RunActionInput {
 	agentId: AgentId;
-	nodeId: GiselleNodeId;
+	actionId: FlowActionId;
 }
 export async function runAction(input: RunActionInput) {
 	const agent = await db.query.agents.findFirst({
@@ -109,6 +110,9 @@ export async function runAction(input: RunActionInput) {
 		throw new Error(`Agent with id ${input.agentId} not found`);
 	}
 	const graph = agent.graphv2;
+	if (graph.flow?.status !== flowStatuses.running) {
+		throw new Error(`Agent with id ${input.agentId} is not running`);
+	}
 
 	const instructionConnector = graph.connectors.find(
 		(connector) =>
@@ -146,6 +150,11 @@ export async function runAction(input: RunActionInput) {
 			await webSearch();
 			break;
 	}
+	await db.update(agents).set({
+		graphv2: {
+			...graph,
+		},
+	});
 }
 
 async function generateText() {
