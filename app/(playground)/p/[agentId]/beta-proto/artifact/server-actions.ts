@@ -56,6 +56,9 @@ ${sourcesToText(sources)}
 			system,
 			prompt: params.userPrompt,
 			schema: artifactSchema,
+			experimental_telemetry: {
+				isEnabled: true,
+			},
 			onFinish: async (result) => {
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
