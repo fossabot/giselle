@@ -6,6 +6,7 @@ import { createStreamableValue } from "ai/rsc";
 
 import { getUserSubscriptionId, isRoute06User } from "@/app/(auth)/lib";
 import { metrics } from "@opentelemetry/api";
+import { waitUntil } from "@vercel/functions";
 import { Langfuse } from "langfuse";
 import { schema as artifactSchema } from "../artifact/schema";
 import type { SourceIndex } from "../source/types";
@@ -62,21 +63,43 @@ ${sourcesToText(sources)}
 				isEnabled: true,
 			},
 			onFinish: async (result) => {
-				console.log("onFinish() envirenment: ", process.env.NEXT_RUNTIME);
-				const meter = metrics.getMeter("OpenAI");
-				const tokenCounter = meter.createCounter("token_consumed", {
-					description: "Number of OpenAI API tokens consumed by each request",
-				});
-				const subscriptionId = await getUserSubscriptionId();
-				const isR06User = await isRoute06User();
-				tokenCounter.add(result.usage.totalTokens, {
-					subscriptionId,
-					isR06User,
-				});
-				generation.end({
-					output: result,
-				});
-				await lf.shutdownAsync();
+				waitUntil(
+					(async () => {
+						try {
+							console.log("Start onFinish:", process.env.NEXT_RUNTIME);
+
+							const meter = metrics.getMeter("OpenAI");
+							console.log("Meter created");
+
+							const tokenCounter = meter.createCounter("token_consumed", {
+								description:
+									"Number of OpenAI API tokens consumed by each request",
+							});
+							console.log("Counter created");
+
+							const subscriptionId = await getUserSubscriptionId();
+							const isR06User = await isRoute06User();
+							console.log("Got user info");
+
+							tokenCounter.add(result.usage.totalTokens, {
+								subscriptionId,
+								isR06User,
+							});
+							console.log("Added to counter");
+
+							await new Promise((resolve) => setTimeout(resolve, 200));
+
+							generation.end({
+								output: result,
+							});
+							await lf.shutdownAsync();
+							console.log("onFinish complete");
+						} catch (error) {
+							console.error("Error in onFinish:", error);
+							throw error;
+						}
+					})(),
+				);
 			},
 		});
 
