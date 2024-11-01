@@ -21,6 +21,7 @@ export async function generateArtifactStream(
 	params: GenerateArtifactStreamParams,
 ) {
 	const lf = new Langfuse();
+	const usageData = { totalTokens: 0 };
 	console.log("generateArtifactStream envirenment: ", process.env.NEXT_RUNTIME);
 	const trace = lf.trace({
 		id: `giselle-${Date.now()}`,
@@ -77,20 +78,24 @@ ${sourcesToText(sources)}
 		const result = await object;
 		const usageData = await usage;
 
-		console.log("await object envirenment: ", process.env.NEXT_RUNTIME);
+		stream.done();
+	})();
+
+	if (usageData) {
+		console.log("inside waitUntil()");
 		const meter = metrics.getMeter("OpenAI");
 		const tokenCounter = meter.createCounter("token_consumed", {
 			description: "Number of OpenAI API tokens consumed by each request",
 		});
 		const subscriptionId = await getUserSubscriptionId();
 		const isR06User = await isRoute06User();
+
 		tokenCounter.add(usageData.totalTokens, {
 			subscriptionId,
 			isR06User,
 		});
-
-		stream.done();
-	})();
+		console.log("totalTokens: ", usageData.totalTokens);
+	}
 
 	return { object: stream.value };
 }
