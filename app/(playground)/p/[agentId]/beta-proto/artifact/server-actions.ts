@@ -53,7 +53,7 @@ ${sourcesToText(sources)}
 			input: params.userPrompt,
 			model,
 		});
-		const { partialObjectStream, object } = await streamObject({
+		const { partialObjectStream, object, usage } = await streamObject({
 			model: openai(model),
 			system,
 			prompt: params.userPrompt,
@@ -62,17 +62,6 @@ ${sourcesToText(sources)}
 				isEnabled: true,
 			},
 			onFinish: async (result) => {
-				console.log("onFinish() envirenment: ", process.env.NEXT_RUNTIME);
-				const meter = metrics.getMeter("OpenAI");
-				const tokenCounter = meter.createCounter("token_consumed", {
-					description: "Number of OpenAI API tokens consumed by each request",
-				});
-				const subscriptionId = await getUserSubscriptionId();
-				const isR06User = await isRoute06User();
-				tokenCounter.add(result.usage.totalTokens, {
-					subscriptionId,
-					isR06User,
-				});
 				generation.end({
 					output: result,
 				});
@@ -86,6 +75,19 @@ ${sourcesToText(sources)}
 		}
 
 		const result = await object;
+		const usageData = await usage;
+
+		console.log("await object envirenment: ", process.env.NEXT_RUNTIME);
+		const meter = metrics.getMeter("OpenAI");
+		const tokenCounter = meter.createCounter("token_consumed", {
+			description: "Number of OpenAI API tokens consumed by each request",
+		});
+		const subscriptionId = await getUserSubscriptionId();
+		const isR06User = await isRoute06User();
+		tokenCounter.add(usageData.totalTokens, {
+			subscriptionId,
+			isR06User,
+		});
 
 		stream.done();
 	})();
