@@ -21,6 +21,7 @@ export async function generateArtifactStream(
 	params: GenerateArtifactStreamParams,
 ) {
 	const lf = new Langfuse();
+	console.log("generateArtifactStream envirenment: ", process.env.NEXT_RUNTIME);
 	const trace = lf.trace({
 		id: `giselle-${Date.now()}`,
 	});
@@ -46,6 +47,7 @@ ${sourcesToText(sources)}
 	const stream = createStreamableValue();
 
 	(async () => {
+		console.log("async() envirenment: ", process.env.NEXT_RUNTIME);
 		const model = "gpt-4o";
 		const generation = trace.generation({
 			input: params.userPrompt,
@@ -60,6 +62,7 @@ ${sourcesToText(sources)}
 				isEnabled: true,
 			},
 			onFinish: async (result) => {
+				console.log("onFinish() envirenment: ", process.env.NEXT_RUNTIME);
 				const meter = metrics.getMeter("OpenAI");
 				const tokenCounter = meter.createCounter("token_consumed", {
 					description: "Number of OpenAI API tokens consumed by each request",
@@ -78,6 +81,7 @@ ${sourcesToText(sources)}
 		});
 
 		for await (const partialObject of partialObjectStream) {
+			console.log("partialObject envirenment: ", process.env.NEXT_RUNTIME);
 			stream.update(partialObject);
 		}
 
