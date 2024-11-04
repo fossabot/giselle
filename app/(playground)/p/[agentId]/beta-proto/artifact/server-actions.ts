@@ -5,7 +5,14 @@ import { streamObject } from "ai";
 import { createStreamableValue } from "ai/rsc";
 
 import { getUserSubscriptionId, isRoute06User } from "@/app/(auth)/lib";
+import {
+	flushTelemetry,
+	log,
+	loggerProvider,
+	metricReader,
+} from "@/instrumentation.node";
 import { metrics } from "@opentelemetry/api";
+import { waitUntil } from "@vercel/functions";
 import { Langfuse } from "langfuse";
 import { schema as artifactSchema } from "../artifact/schema";
 import type { SourceIndex } from "../source/types";
@@ -77,6 +84,8 @@ ${sourcesToText(sources)}
 					output: result,
 				});
 				await lf.shutdownAsync();
+
+				waitUntil(flushTelemetry());
 			},
 		});
 

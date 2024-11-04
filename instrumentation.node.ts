@@ -1,3 +1,11 @@
+import {
+	DiagConsoleLogger,
+	DiagLogLevel,
+	diag,
+	metrics,
+	trace,
+} from "@opentelemetry/api";
+import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
 import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-http";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
@@ -69,3 +77,45 @@ registerOTel({
 
 export const logger = loggerProvider.getLogger("giselle");
 console.log("-- OTEL registered with metrics, traces, and logs --");
+
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
+export function log(
+	severity: SeverityNumber,
+	message: string,
+	attributes?: Record<string, string>,
+) {
+	const consoleMethod =
+		severity <= SeverityNumber.INFO ? console.log : console.error;
+	consoleMethod(message, attributes);
+
+	logger.emit({ severityNumber: severity, body: message, attributes });
+}
+
+export async function flushTelemetry() {
+	try {
+		log(SeverityNumber.INFO, "Exporting telemetry data", {
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+
+		await Promise.all([
+			metricReader.forceFlush(),
+			loggerProvider.forceFlush(),
+			spanProcessor.forceFlush(),
+			new Promise((resolve) => setTimeout(resolve, 10000)), // wait for exporting
+		]);
+
+		log(SeverityNumber.INFO, "flushTelemetry() completed", {
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+	} catch (error) {
+		log(SeverityNumber.ERROR, "Error in flushTelemetry():", {
+			error: error instanceof Error ? error.message : String(error),
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+		throw error;
+	}
+}
