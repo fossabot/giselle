@@ -36,6 +36,7 @@ function initializeOtelSDK() {
 	const metricReader = new PeriodicExportingMetricReader({
 		exporter: metricExporter,
 		exportIntervalMillis: 10000,
+		exportTimeoutMillis: 5000,
 	});
 
 	// Trace Exporter
