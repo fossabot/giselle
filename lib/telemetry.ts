@@ -1,5 +1,5 @@
-import { SeverityNumber } from "@opentelemetry/api-logs";
-import type { Logger, LoggerProvider } from "@opentelemetry/sdk-logs";
+import { type Logger, SeverityNumber } from "@opentelemetry/api-logs";
+import type { LoggerProvider } from "@opentelemetry/sdk-logs";
 import type { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
 import type { BatchSpanProcessor } from "@opentelemetry/sdk-trace-node";
 
