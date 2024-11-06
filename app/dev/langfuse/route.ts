@@ -10,7 +10,7 @@ export async function POST() {
 	// });
 	const { text } = await generateText({
 		model: openai("gpt-4o-mini"),
-		prompt: "Hello, World!",
+		prompt: "What's up?",
 		experimental_telemetry: { isEnabled: true },
 	});
 	return Response.json({ message: text });
