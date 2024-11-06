@@ -32,6 +32,7 @@ export async function flushTelemetry() {
 			telemetryState.metricReader.forceFlush(),
 			telemetryState.loggerProvider.forceFlush(),
 			telemetryState.spanProcessor.forceFlush(),
+			new Promise((resolve) => setTimeout(resolve, 10000)),
 		]);
 
 		log(SeverityNumber.INFO, "flushTelemetry() completed", {
