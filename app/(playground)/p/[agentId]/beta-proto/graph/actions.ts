@@ -8,7 +8,7 @@ import { createConnectorId } from "../connector/factory";
 import type { ConnectorId, ConnectorObject } from "../connector/types";
 import { buildConnector } from "../connector/utils";
 import { type StructuredData, fileStatuses } from "../files/types";
-import type { V2FlowAction } from "../flow/action";
+import type { V2FlowAction, V2FlowIndexAction } from "../flow/action";
 import type { V2NodeAction } from "../giselle-node/actions";
 import {
 	type GiselleNodeArchetype,
@@ -154,7 +154,6 @@ export const addNodesAndConnect = (
 ): CompositeAction => {
 	return (dispatch, getState) => {
 		const state = getState();
-		const hasFinalNode = state.graph.nodes.some((node) => node.isFinal);
 		const currentNodes = getState().graph.nodes;
 		const addSourceNode = buildGiselleNode({
 			...args.sourceNode,
@@ -163,7 +162,7 @@ export const addNodesAndConnect = (
 		dispatch(v2AddNode({ input: { node: addSourceNode } }));
 		const addTargetNode = buildGiselleNode({
 			...args.targetNode,
-			isFinal: !hasFinalNode,
+			isFinal: true,
 			name: `Untitled node - ${currentNodes.length + 2}`,
 		});
 		dispatch(v2AddNode({ input: { node: addTargetNode } }));
@@ -536,15 +535,10 @@ export const generateText =
 							content: content?.artifact?.content ?? "",
 							generatorNode: {
 								id: node.id,
-								category: node.category,
 								archetype: node.archetype,
 								name: node.name,
 								object: "node.artifactElement",
-								properties: node.properties,
 							},
-							elements: [
-								giselleNodeToGiselleNodeArtifactElement(instructionNode),
-							],
 						},
 					}),
 				);
@@ -674,6 +668,7 @@ export type GraphAction =
 	| UpsertWebSearchAction
 	| V2NodeAction
 	| V2ModeAction
-	| V2FlowAction
+	| V2FlowIndexAction
 	| V2XyFlowAction
-	| V2ConnectorAction;
+	| V2ConnectorAction
+	| V2FlowAction;

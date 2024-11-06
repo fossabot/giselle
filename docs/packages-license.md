@@ -1,24 +1,23 @@
 # giselle
 
-As of October 29, 2024 10:23am. 926 total
+As of November  5, 2024  8:23am. 824 total
 
 ## Summary
-* 667 MIT
-* 135 Apache 2.0
-* 64 ISC
-* 24 New BSD
+* 605 MIT
+* 107 Apache 2.0
+* 58 ISC
+* 23 New BSD
 * 12 Simplified BSD
-* 4 (MIT OR CC0-1.0)
 * 3 MIT OR Apache-2.0
 * 3 BlueOak-1.0.0
-* 3 The Unlicense
 * 2 LGPL-3.0-or-later
 * 2 BSD Zero Clause License
+* 2 The Unlicense
 * 1 (MIT AND Zlib)
 * 1 CC0 1.0 Universal
 * 1 unknown
-* 1 BSD
 * 1 CC-BY-4.0
+* 1 (MIT OR CC0-1.0)
 * 1 (AFL-2.1 OR BSD-3-Clause)
 * 1 Apache 2.0, BSD Zero Clause License, ISC, MIT, Mozilla Public License 2.0, New BSD, Simplified BSD, The Unlicense, zlib/libpng license
 
@@ -379,39 +378,6 @@ MIT OR Apache-2.0 permitted
 
 
 
-<a name="@bundled-es-modules/cookie"></a>
-### @bundled-es-modules/cookie v2.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-mirror of cookie, bundled and exposed as ES module
-
-<a name="@bundled-es-modules/statuses"></a>
-### @bundled-es-modules/statuses v1.0.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-mirror of statuses, bundled and exposed as ES module
-
-<a name="@bundled-es-modules/tough-cookie"></a>
-### @bundled-es-modules/tough-cookie v0.1.6 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-Mirror of tough-cookie, bundled and exposed as ES module
-
 <a name="@clack/core"></a>
 ### <a href="https://github.com/natemoo-re/clack/tree/main/packages/core#readme">@clack/core</a> v0.3.4 (dependencies)
 #### 
@@ -544,17 +510,6 @@ Floating UI for React DOM
 
 Utilities for Floating UI
 
-<a name="@google-cloud/precise-date"></a>
-### @google-cloud/precise-date v4.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-A simple utility for precise-dateing functions and classes.
-
 <a name="@grpc/grpc-js"></a>
 ### <a href="https://grpc.io/">@grpc/grpc-js</a> v1.11.1 (dependencies)
 #### 
@@ -631,50 +586,6 @@ Prebuilt sharp for use with Linux (glibc) x64
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 Prebuilt sharp for use with Linux (musl) x64
-
-<a name="@inquirer/confirm"></a>
-### <a href="https://github.com/SBoudrias/Inquirer.js/blob/main/packages/confirm/README.md">@inquirer/confirm</a> v3.1.22 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Inquirer confirm prompt
-
-<a name="@inquirer/core"></a>
-### <a href="https://github.com/SBoudrias/Inquirer.js/blob/main/packages/core/README.md">@inquirer/core</a> v9.0.10 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Core Inquirer prompt API
-
-<a name="@inquirer/figures"></a>
-### @inquirer/figures v1.0.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Vendored version of figures, for CJS compatibility
-
-<a name="@inquirer/type"></a>
-### @inquirer/type v1.5.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Inquirer core TS types
 
 <a name="@isaacs/cliui"></a>
 ### @isaacs/cliui v8.0.2 (dependencies, devDependencies)
@@ -775,17 +686,6 @@ javascript standard data structure library which benchmark against C++ STL
 
 JavaScript SDK for Firecrawl API
 
-<a name="@mswjs/interceptors"></a>
-### @mswjs/interceptors v0.29.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Low-level HTTP/HTTPS/XHR/fetch request interception library.
-
 <a name="@neondatabase/serverless"></a>
 ### <a href="https://neon.tech">@neondatabase/serverless</a> v0.9.4 (dependencies)
 #### 
@@ -809,7 +709,7 @@ node-postgres for serverless environments from neon.tech
 Next.js dotenv file loading
 
 <a name="@next/env"></a>
-### @next/env v15.0.0-rc.1 (dependencies)
+### @next/env v15.0.2 (dependencies)
 #### 
 
 ##### Paths
@@ -820,7 +720,7 @@ Next.js dotenv file loading
 Next.js dotenv file loading
 
 <a name="@next/swc-linux-x64-gnu"></a>
-### @next/swc-linux-x64-gnu v15.0.0-rc.1 (dependencies)
+### @next/swc-linux-x64-gnu v15.0.2 (dependencies)
 #### 
 
 ##### Paths
@@ -831,7 +731,7 @@ Next.js dotenv file loading
 
 
 <a name="@next/swc-linux-x64-musl"></a>
-### @next/swc-linux-x64-musl v15.0.0-rc.1 (dependencies)
+### @next/swc-linux-x64-musl v15.0.2 (dependencies)
 #### 
 
 ##### Paths
@@ -896,39 +796,6 @@ Get the status of a file with some features
 
 A library for efficiently walking a directory recursively
 
-<a name="@open-draft/deferred-promise"></a>
-### @open-draft/deferred-promise v2.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-A Promise-compatible abstraction that defers resolving/rejecting promises to another closure.
-
-<a name="@open-draft/logger"></a>
-### @open-draft/logger v0.3.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Environment-agnostic, ESM-friendly logger for simple needs.
-
-<a name="@open-draft/until"></a>
-### @open-draft/until v2.1.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Gracefully handle a Promise using async/await.
-
 <a name="@opentelemetry/api"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/api">@opentelemetry/api</a> v1.9.0 (dependencies)
 #### 
@@ -939,28 +806,6 @@ Gracefully handle a Promise using async/await.
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 Public API for OpenTelemetry
-
-<a name="@opentelemetry/api-logs"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/api-logs">@opentelemetry/api-logs</a> v0.48.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-Public logs API for OpenTelemetry
-
-<a name="@opentelemetry/api-logs"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/api-logs">@opentelemetry/api-logs</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-Public logs API for OpenTelemetry
 
 <a name="@opentelemetry/api-logs"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/api-logs">@opentelemetry/api-logs</a> v0.51.1 (dependencies)
@@ -996,17 +841,6 @@ Public logs API for OpenTelemetry
 Public logs API for OpenTelemetry
 
 <a name="@opentelemetry/context-async-hooks"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-context-async-hooks">@opentelemetry/context-async-hooks</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry AsyncHooks-based Context Manager
-
-<a name="@opentelemetry/context-async-hooks"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-context-async-hooks">@opentelemetry/context-async-hooks</a> v1.24.1 (dependencies)
 #### 
 
@@ -1027,17 +861,6 @@ OpenTelemetry AsyncHooks-based Context Manager
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry AsyncHooks-based Context Manager
-
-<a name="@opentelemetry/core"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-core">@opentelemetry/core</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Core provides constants and utilities shared by all OpenTelemetry SDK packages.
 
 <a name="@opentelemetry/core"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-core">@opentelemetry/core</a> v1.24.1 (dependencies)
@@ -1072,17 +895,6 @@ OpenTelemetry Core provides constants and utilities shared by all OpenTelemetry 
 
 OpenTelemetry Core provides constants and utilities shared by all OpenTelemetry SDK packages.
 
-<a name="@opentelemetry/exporter-logs-otlp-http"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-http">@opentelemetry/exporter-logs-otlp-http</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Collector Logs Exporter allows user to send collected logs to the OpenTelemetry Collector
-
 <a name="@opentelemetry/exporter-metrics-otlp-http"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-http">@opentelemetry/exporter-metrics-otlp-http</a> v0.52.1 (dependencies)
 #### 
@@ -1093,17 +905,6 @@ OpenTelemetry Collector Logs Exporter allows user to send collected logs to the 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry Collector Metrics Exporter allows user to send collected metrics to the OpenTelemetry Collector
-
-<a name="@opentelemetry/exporter-trace-otlp-grpc"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc">@opentelemetry/exporter-trace-otlp-grpc</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Collector Exporter allows user to send collected traces to the OpenTelemetry Collector
 
 <a name="@opentelemetry/exporter-trace-otlp-grpc"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc">@opentelemetry/exporter-trace-otlp-grpc</a> v0.51.1 (dependencies)
@@ -1117,17 +918,6 @@ OpenTelemetry Collector Exporter allows user to send collected traces to the Ope
 OpenTelemetry Collector Exporter allows user to send collected traces to the OpenTelemetry Collector
 
 <a name="@opentelemetry/exporter-trace-otlp-http"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-http">@opentelemetry/exporter-trace-otlp-http</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Collector Trace Exporter allows user to send collected traces to the OpenTelemetry Collector
-
-<a name="@opentelemetry/exporter-trace-otlp-http"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-http">@opentelemetry/exporter-trace-otlp-http</a> v0.51.1 (dependencies)
 #### 
 
@@ -1137,17 +927,6 @@ OpenTelemetry Collector Trace Exporter allows user to send collected traces to t
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry Collector Trace Exporter allows user to send collected traces to the OpenTelemetry Collector
-
-<a name="@opentelemetry/exporter-trace-otlp-proto"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-proto">@opentelemetry/exporter-trace-otlp-proto</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Collector Exporter allows user to send collected traces to the OpenTelemetry Collector using protobuf over HTTP
 
 <a name="@opentelemetry/exporter-trace-otlp-proto"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-proto">@opentelemetry/exporter-trace-otlp-proto</a> v0.51.1 (dependencies)
@@ -1161,17 +940,6 @@ OpenTelemetry Collector Exporter allows user to send collected traces to the Ope
 OpenTelemetry Collector Exporter allows user to send collected traces to the OpenTelemetry Collector using protobuf over HTTP
 
 <a name="@opentelemetry/exporter-zipkin"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin">@opentelemetry/exporter-zipkin</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Zipkin Exporter allows the user to send collected traces to Zipkin.
-
-<a name="@opentelemetry/exporter-zipkin"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin">@opentelemetry/exporter-zipkin</a> v1.24.1 (dependencies)
 #### 
 
@@ -1181,17 +949,6 @@ OpenTelemetry Zipkin Exporter allows the user to send collected traces to Zipkin
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry Zipkin Exporter allows the user to send collected traces to Zipkin.
-
-<a name="@opentelemetry/instrumentation"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation">@opentelemetry/instrumentation</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-Base class for node which OpenTelemetry instrumentation modules extend
 
 <a name="@opentelemetry/instrumentation"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation">@opentelemetry/instrumentation</a> v0.51.1 (dependencies)
@@ -1469,17 +1226,6 @@ OpenTelemetry instrumentation for `redis` v4 database client for Redis
 OpenTelemetry instrumentation for `undici` http client and Node.js fetch()
 
 <a name="@opentelemetry/otlp-exporter-base"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-exporter-base">@opentelemetry/otlp-exporter-base</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry OTLP Exporter base (for internal use only)
-
-<a name="@opentelemetry/otlp-exporter-base"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-exporter-base">@opentelemetry/otlp-exporter-base</a> v0.51.1 (dependencies)
 #### 
 
@@ -1502,17 +1248,6 @@ OpenTelemetry OTLP Exporter base (for internal use only)
 OpenTelemetry OTLP Exporter base (for internal use only)
 
 <a name="@opentelemetry/otlp-grpc-exporter-base"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-grpc-exporter-base">@opentelemetry/otlp-grpc-exporter-base</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry OTLP-gRPC Exporter base (for internal use only)
-
-<a name="@opentelemetry/otlp-grpc-exporter-base"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-grpc-exporter-base">@opentelemetry/otlp-grpc-exporter-base</a> v0.51.1 (dependencies)
 #### 
 
@@ -1524,17 +1259,6 @@ OpenTelemetry OTLP-gRPC Exporter base (for internal use only)
 OpenTelemetry OTLP-gRPC Exporter base (for internal use only)
 
 <a name="@opentelemetry/otlp-proto-exporter-base"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-proto-exporter-base">@opentelemetry/otlp-proto-exporter-base</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry OTLP-HTTP-protobuf Exporter base (for internal use only)
-
-<a name="@opentelemetry/otlp-proto-exporter-base"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-proto-exporter-base">@opentelemetry/otlp-proto-exporter-base</a> v0.51.1 (dependencies)
 #### 
 
@@ -1544,17 +1268,6 @@ OpenTelemetry OTLP-HTTP-protobuf Exporter base (for internal use only)
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry OTLP-HTTP-protobuf Exporter base (for internal use only)
-
-<a name="@opentelemetry/otlp-transformer"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-transformer">@opentelemetry/otlp-transformer</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-Transform OpenTelemetry SDK data into OTLP
 
 <a name="@opentelemetry/otlp-transformer"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-transformer">@opentelemetry/otlp-transformer</a> v0.51.1 (dependencies)
@@ -1579,17 +1292,6 @@ Transform OpenTelemetry SDK data into OTLP
 Transform OpenTelemetry SDK data into OTLP
 
 <a name="@opentelemetry/propagator-b3"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-b3">@opentelemetry/propagator-b3</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry B3 propagator provides context propagation for systems that are using the B3 header format
-
-<a name="@opentelemetry/propagator-b3"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-b3">@opentelemetry/propagator-b3</a> v1.24.1 (dependencies)
 #### 
 
@@ -1600,41 +1302,8 @@ OpenTelemetry B3 propagator provides context propagation for systems that are us
 
 OpenTelemetry B3 propagator provides context propagation for systems that are using the B3 header format
 
-<a name="@opentelemetry/propagator-b3"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-b3">@opentelemetry/propagator-b3</a> v1.25.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry B3 propagator provides context propagation for systems that are using the B3 header format
-
-<a name="@opentelemetry/propagator-jaeger"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-jaeger">@opentelemetry/propagator-jaeger</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Jaeger propagator provides HTTP header propagation for systems that are using Jaeger HTTP header format.
-
 <a name="@opentelemetry/propagator-jaeger"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-jaeger">@opentelemetry/propagator-jaeger</a> v1.24.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Jaeger propagator provides HTTP header propagation for systems that are using Jaeger HTTP header format.
-
-<a name="@opentelemetry/propagator-jaeger"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-jaeger">@opentelemetry/propagator-jaeger</a> v1.25.1 (dependencies)
 #### 
 
 ##### Paths
@@ -1654,17 +1323,6 @@ OpenTelemetry Jaeger propagator provides HTTP header propagation for systems tha
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 Redis utilities for redis instrumentations
-
-<a name="@opentelemetry/resources"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources">@opentelemetry/resources</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry SDK resources
 
 <a name="@opentelemetry/resources"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources">@opentelemetry/resources</a> v1.24.1 (dependencies)
@@ -1700,17 +1358,6 @@ OpenTelemetry SDK resources
 OpenTelemetry SDK resources
 
 <a name="@opentelemetry/sdk-logs"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/sdk-logs">@opentelemetry/sdk-logs</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry logs SDK
-
-<a name="@opentelemetry/sdk-logs"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/sdk-logs">@opentelemetry/sdk-logs</a> v0.51.1 (dependencies)
 #### 
 
@@ -1731,17 +1378,6 @@ OpenTelemetry logs SDK
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry logs SDK
-
-<a name="@opentelemetry/sdk-metrics"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics">@opentelemetry/sdk-metrics</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry metrics SDK
 
 <a name="@opentelemetry/sdk-metrics"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics">@opentelemetry/sdk-metrics</a> v1.24.1 (dependencies)
@@ -1766,17 +1402,6 @@ OpenTelemetry metrics SDK
 OpenTelemetry metrics SDK
 
 <a name="@opentelemetry/sdk-node"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node">@opentelemetry/sdk-node</a> v0.49.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry SDK for Node.js
-
-<a name="@opentelemetry/sdk-node"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node">@opentelemetry/sdk-node</a> v0.51.1 (dependencies)
 #### 
 
@@ -1786,17 +1411,6 @@ OpenTelemetry SDK for Node.js
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry SDK for Node.js
-
-<a name="@opentelemetry/sdk-trace-base"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-base">@opentelemetry/sdk-trace-base</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Tracing
 
 <a name="@opentelemetry/sdk-trace-base"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-base">@opentelemetry/sdk-trace-base</a> v1.24.1 (dependencies)
@@ -1832,17 +1446,6 @@ OpenTelemetry Tracing
 OpenTelemetry Tracing
 
 <a name="@opentelemetry/sdk-trace-node"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node">@opentelemetry/sdk-trace-node</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Node SDK provides automatic telemetry (tracing, metrics, etc) for Node.js applications
-
-<a name="@opentelemetry/sdk-trace-node"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node">@opentelemetry/sdk-trace-node</a> v1.24.1 (dependencies)
 #### 
 
@@ -1852,28 +1455,6 @@ OpenTelemetry Node SDK provides automatic telemetry (tracing, metrics, etc) for 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
 
 OpenTelemetry Node SDK provides automatic telemetry (tracing, metrics, etc) for Node.js applications
-
-<a name="@opentelemetry/sdk-trace-node"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node">@opentelemetry/sdk-trace-node</a> v1.25.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry Node SDK provides automatic telemetry (tracing, metrics, etc) for Node.js applications
-
-<a name="@opentelemetry/semantic-conventions"></a>
-### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-semantic-conventions">@opentelemetry/semantic-conventions</a> v1.22.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-OpenTelemetry semantic conventions
 
 <a name="@opentelemetry/semantic-conventions"></a>
 ### <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-semantic-conventions">@opentelemetry/semantic-conventions</a> v1.24.1 (dependencies)
@@ -2997,17 +2578,6 @@ Official Sentry Webpack plugin
 
 Sentry wizard helping you to configure your project
 
-<a name="@socket.io/component-emitter"></a>
-### @socket.io/component-emitter v3.1.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Event emitter
-
 <a name="@supabase/auth-js"></a>
 ### <a href="https://github.com/supabase/auth-js">@supabase/auth-js</a> v2.64.4 (dependencies)
 #### 
@@ -3128,39 +2698,6 @@ External helpers for the swc project.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 A Tailwind CSS plugin for automatically styling plain HTML content with beautiful typographic defaults.
-
-<a name="@trigger.dev/core"></a>
-### @trigger.dev/core v3.0.0-beta.55 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Core code used across the Trigger.dev SDK and platform
-
-<a name="@trigger.dev/core-backend"></a>
-### @trigger.dev/core-backend v3.0.0-beta.55 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Core code used across `@trigger.dev/sdk` and Trigger.dev server
-
-<a name="@trigger.dev/sdk"></a>
-### @trigger.dev/sdk v3.0.0-beta.55 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-trigger.dev Node.JS SDK
 
 <a name="@types/connect"></a>
 ### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect">@types/connect</a> v3.4.36 (dependencies)
@@ -3349,17 +2886,6 @@ TypeScript definitions for mdast
 
 TypeScript definitions for ms
 
-<a name="@types/mute-stream"></a>
-### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/mute-stream">@types/mute-stream</a> v0.0.4 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-TypeScript definitions for mute-stream
-
 <a name="@types/mysql"></a>
 ### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/mysql">@types/mysql</a> v2.15.26 (dependencies)
 #### 
@@ -3459,28 +2985,6 @@ TypeScript definitions for phoenix
 
 TypeScript definitions for shimmer
 
-<a name="@types/statuses"></a>
-### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/statuses">@types/statuses</a> v2.0.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-TypeScript definitions for statuses
-
-<a name="@types/tough-cookie"></a>
-### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/tough-cookie">@types/tough-cookie</a> v4.0.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-TypeScript definitions for tough-cookie
-
 <a name="@types/unist"></a>
 ### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/unist">@types/unist</a> v3.0.3 (dependencies)
 #### 
@@ -3491,17 +2995,6 @@ TypeScript definitions for tough-cookie
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 TypeScript definitions for unist
-
-<a name="@types/wrap-ansi"></a>
-### @types/wrap-ansi v3.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-TypeScript definitions for wrap-ansi
 
 <a name="@types/ws"></a>
 ### <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/ws">@types/ws</a> v8.5.12 (dependencies)
@@ -3925,17 +3418,6 @@ An implementation of WHATWG AbortController interface.
 
 ECMAScript parser
 
-<a name="acorn-import-assertions"></a>
-### acorn-import-assertions v1.9.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Support for import assertions in acorn
-
 <a name="acorn-import-attributes"></a>
 ### acorn-import-attributes v1.9.5 (dependencies)
 #### 
@@ -4004,28 +3486,6 @@ Custom JSON-Schema keywords for Ajv validator
 
 <a name="ansi-escapes"></a>
 ### ansi-escapes v3.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-ANSI escape codes for manipulating the terminal
-
-<a name="ansi-escapes"></a>
-### ansi-escapes v4.3.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-ANSI escape codes for manipulating the terminal
-
-<a name="ansi-escapes"></a>
-### ansi-escapes v5.0.0 (dependencies)
 #### 
 
 ##### Paths
@@ -4498,17 +3958,6 @@ Terminal string styling done right
 Terminal string styling done right
 
 <a name="chalk"></a>
-### chalk v4.1.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Terminal string styling done right
-
-<a name="chalk"></a>
 ### chalk v5.3.0 (dependencies)
 #### 
 
@@ -4629,30 +4078,8 @@ Build a class attribute string quickly.
 
 Toggle the CLI cursor
 
-<a name="cli-spinners"></a>
-### cli-spinners v2.9.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Spinners for use in the terminal
-
 <a name="cli-width"></a>
 ### <a href="https://github.com/knownasilya/cli-width">cli-width</a> v2.2.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-Get stdout window width, with two fallbacks, tty and then a default.
-
-<a name="cli-width"></a>
-### <a href="https://github.com/knownasilya/cli-width">cli-width</a> v4.1.0 (dependencies)
 #### 
 
 ##### Paths
@@ -4872,17 +4299,6 @@ compute the closest common parent for file paths
 Converts a source-map from/to  different formats and allows adding/changing properties.
 
 <a name="cookie"></a>
-### cookie v0.5.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-HTTP server cookie parsing and serialization
-
-<a name="cookie"></a>
 ### cookie v0.6.0 (dependencies)
 #### 
 
@@ -4892,28 +4308,6 @@ HTTP server cookie parsing and serialization
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 HTTP server cookie parsing and serialization
-
-<a name="copy-anything"></a>
-### <a href="https://github.com/mesqueeb/copy-anything#readme">copy-anything</a> v3.0.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-An optimised way to copy'ing an object. A small and simple integration
-
-<a name="cronstrue"></a>
-### <a href="https://github.com/bradymholt/cronstrue">cronstrue</a> v2.50.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Convert cron expressions into human readable descriptions
 
 <a name="cross-spawn"></a>
 ### <a href="https://github.com/moxystudio/node-cross-spawn">cross-spawn</a> v7.0.3 (dependencies, devDependencies)
@@ -5267,28 +4661,6 @@ A regular expression to match all Emoji-only symbols as per the Unicode Standard
 
 A regular expression to match all Emoji-only symbols as per the Unicode Standard.
 
-<a name="engine.io-client"></a>
-### <a href="https://github.com/socketio/engine.io-client">engine.io-client</a> v6.5.4 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Client for the realtime Engine
-
-<a name="engine.io-parser"></a>
-### <a href="https://github.com/socketio/socket.io/tree/main/packages/engine.io-parser#readme">engine.io-parser</a> v5.2.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Parser for the client for the realtime Engine
-
 <a name="enhanced-resolve"></a>
 ### <a href="http://github.com/webpack/enhanced-resolve">enhanced-resolve</a> v5.17.1 (dependencies)
 #### 
@@ -5508,17 +4880,6 @@ Node's event emitter for all engines.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Streaming, source-agnostic EventSource/Server-Sent Events parser
-
-<a name="evt"></a>
-### <a href="https://evt.land">evt</a> v2.5.7 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Type safe replacement for node's EventEmitter
 
 <a name="extend"></a>
 ### extend v3.0.2 (dependencies)
@@ -5762,43 +5123,6 @@ returns nonce
 
 Find and parse the tsconfig.json file from a directory path
 
-<a name="git-remote-origin-url"></a>
-### git-remote-origin-url v4.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Get the remote origin URL of a Git repository
-
-<a name="git-repo-info"></a>
-### <a href="https://github.com/rwjblue/git-repo-info">git-repo-info</a> v2.1.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Retrieve current sha and branch name from a git repo.
-
-<a name="gitconfiglocal"></a>
-### gitconfiglocal v2.1.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="https://directory.fsf.org/wiki/License:BSD-4-Clause">BSD</a> manually approved
-
->The BSD license in package.json is wrong. See https://github.com/soldair/node-gitconfiglocal/pull/13
-
-><cite>  2024-09-18</cite>
-
-parse the .git/config file into a useful data structure
-
 <a name="glob"></a>
 ### glob v10.4.5 (dependencies, devDependencies)
 #### 
@@ -5897,17 +5221,6 @@ Global identifiers from different JavaScript environments
 <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
 
 A drop-in replacement for fs, making various improvements.
-
-<a name="graphql"></a>
-### <a href="https://github.com/graphql/graphql-js">graphql</a> v16.9.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-A Query Language and Runtime which can target any service.
 
 <a name="has-flag"></a>
 ### has-flag v3.0.0 (dependencies)
@@ -6008,17 +5321,6 @@ hast utility to serialize to HTML
 
 hast utility to check if a node is inter-element whitespace
 
-<a name="headers-polyfill"></a>
-### headers-polyfill v4.0.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-A native "Headers" class polyfill.
-
 <a name="hoist-non-react-statics"></a>
 ### hoist-non-react-statics v3.3.2 (dependencies)
 #### 
@@ -6051,17 +5353,6 @@ List of HTML void tag names
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 An HTTP(s) proxy `http.Agent` implementation for HTTPS
-
-<a name="humanize-duration"></a>
-### <a href="https://github.com/EvanHahn/HumanizeDuration.js">humanize-duration</a> v3.32.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="https://unlicense.org/">The Unlicense</a> permitted
-
-Convert millisecond durations to English and many other languages.
 
 <a name="humanize-ms"></a>
 ### humanize-ms v1.2.1 (dependencies)
@@ -6108,17 +5399,6 @@ A cross browser microtask library
 Intercept imports in Node.js
 
 <a name="import-in-the-middle"></a>
-### <a href="https://github.com/DataDog/import-in-the-middle#readme">import-in-the-middle</a> v1.7.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> permitted
-
-Intercept imports in Node.js
-
-<a name="import-in-the-middle"></a>
 ### <a href="https://github.com/DataDog/import-in-the-middle#readme">import-in-the-middle</a> v1.7.4 (dependencies)
 #### 
 
@@ -6150,17 +5430,6 @@ Add callbacks to requests in flight to avoid async duplication
 <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
 
 Browser-friendly inheritance fully compatible with standard node.js inherits()
-
-<a name="ini"></a>
-### ini v1.3.8 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-An ini encoder/decoder for node
 
 <a name="input-otp"></a>
 ### <a href="https://input-otp.rodz.dev/">input-otp</a> v1.2.4 (dependencies)
@@ -6283,17 +5552,6 @@ Check if the character represented by a given Unicode code point is fullwidth
 
 Returns `true` if the given string looks like a glob pattern or an extglob pattern. This makes it easy to create code that only uses external modules like node-glob when necessary, resulting in much faster code execution and initialization time, and a better user experience.
 
-<a name="is-node-process"></a>
-### is-node-process v1.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Reliably determines if the code is running in Node.js
-
 <a name="is-number"></a>
 ### <a href="https://github.com/jonschlinkert/is-number">is-number</a> v7.0.0 (dependencies, devDependencies)
 #### 
@@ -6381,17 +5639,6 @@ Detect whether the terminal supports Unicode
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Detect whether the terminal supports Unicode
-
-<a name="is-what"></a>
-### <a href="https://github.com/mesqueeb/is-what#readme">is-what</a> v4.1.16 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.
 
 <a name="is-wsl"></a>
 ### is-wsl v1.1.0 (dependencies)
@@ -6579,17 +5826,6 @@ Diff & Patch for Javascript objects
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 
-
-<a name="layerr"></a>
-### <a href="https://github.com/perry-mitchell/layerr#readme">layerr</a> v3.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Error wrapping utility for NodeJS and the browser
 
 <a name="lie"></a>
 ### lie v3.1.1 (dependencies)
@@ -7196,17 +6432,6 @@ The ultimate javascript content-type utility.
 
 Make a function mimic another one
 
-<a name="minimal-polyfills"></a>
-### minimal-polyfills v2.2.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-An ultra light-weight, nonexhaustive, polyfills library
-
 <a name="minimatch"></a>
 ### minimatch v5.1.6 (dependencies)
 #### 
@@ -7306,17 +6531,6 @@ Extract the Node.js module details like name and base path given an abosulte pat
 
 Tiny millisecond conversion utility
 
-<a name="msw"></a>
-### <a href="https://mswjs.io">msw</a> v2.3.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Seamless REST/GraphQL API mocking library for browser and Node.js.
-
 <a name="mustache"></a>
 ### <a href="https://github.com/janl/mustache.js">mustache</a> v4.2.0 (dependencies)
 #### 
@@ -7330,17 +6544,6 @@ Logic-less {{mustache}} templates with JavaScript
 
 <a name="mute-stream"></a>
 ### mute-stream v0.0.7 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
-
-Bytes go in, but they don't come out (when muted).
-
-<a name="mute-stream"></a>
-### mute-stream v1.0.0 (dependencies)
 #### 
 
 ##### Paths
@@ -7395,7 +6598,7 @@ A tiny (116 bytes), secure URL-friendly unique string ID generator
 Neo-Async is a drop-in replacement for Async, it almost fully covers its functionality and runs faster 
 
 <a name="next"></a>
-### <a href="https://nextjs.org">next</a> v15.0.0-rc.1 (dependencies)
+### <a href="https://nextjs.org">next</a> v15.0.2 (dependencies)
 #### 
 
 ##### Paths
@@ -7592,17 +6795,6 @@ A better node-open. Opens stuff like websites, files, executables. Cross-platfor
 
 Node.js os.tmpdir() ponyfill
 
-<a name="outvariant"></a>
-### outvariant v1.4.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Type-safe implementation of invariant with positionals.
-
 <a name="p-limit"></a>
 ### p-limit v3.1.0 (dependencies)
 #### 
@@ -7690,17 +6882,6 @@ Node.js path.parse() ponyfill
 BlueOak-1.0.0 permitted
 
 walk paths fast and efficiently
-
-<a name="path-to-regexp"></a>
-### path-to-regexp v6.2.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Express style path to RegExp utility
 
 <a name="pdf-lib"></a>
 ### <a href="https://pdf-lib.js.org">pdf-lib</a> v1.17.1 (dependencies)
@@ -8131,17 +7312,6 @@ Protocol Buffers for JavaScript (& TypeScript).
 
 Offers getProxyForUrl to get the proxy URL for a URL, respecting the *_PROXY (e.g. HTTP_PROXY) and NO_PROXY environment variables.
 
-<a name="psl"></a>
-### psl v1.9.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Domain name parser based on the Public Suffix List
-
 <a name="punycode"></a>
 ### <a href="https://mths.be/punycode">punycode</a> v2.3.1 (dependencies)
 #### 
@@ -8163,17 +7333,6 @@ A robust Punycode converter that fully complies to RFC 3492 and RFC 5891, and wo
 <a href="http://opensource.org/licenses/BSD-3-Clause">New BSD</a> permitted
 
 A querystring parser that supports nesting and arrays, with a depth limit
-
-<a name="querystringify"></a>
-### <a href="https://github.com/unshiftio/querystringify">querystringify</a> v2.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Querystringify - Small, simple but powerful query string parser.
 
 <a name="queue-microtask"></a>
 ### <a href="https://github.com/feross/queue-microtask">queue-microtask</a> v1.2.3 (dependencies, devDependencies)
@@ -8209,7 +7368,7 @@ HTTP client. Spiritual successor to request.
 random bytes from browserify stand alone
 
 <a name="react"></a>
-### <a href="https://react.dev/">react</a> v19.0.0-rc-83825814-20241015 (dependencies)
+### <a href="https://react.dev/">react</a> v19.0.0-rc-4d577fd2-20241104 (dependencies)
 #### 
 
 ##### Paths
@@ -8220,7 +7379,7 @@ random bytes from browserify stand alone
 React is a JavaScript library for building user interfaces.
 
 <a name="react-dom"></a>
-### <a href="https://react.dev/">react-dom</a> v19.0.0-rc-83825814-20241015 (dependencies)
+### <a href="https://react.dev/">react-dom</a> v19.0.0-rc-4d577fd2-20241104 (dependencies)
 #### 
 
 ##### Paths
@@ -8406,17 +7565,6 @@ Recursively iterates over specified directory, require()'ing each file, and retu
 
 Module to hook into the Node.js require function
 
-<a name="requires-port"></a>
-### <a href="https://github.com/unshiftio/requires-port">requires-port</a> v1.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Check if a protocol requires a certain port number to be added to an URL.
-
 <a name="resolve"></a>
 ### resolve v1.22.8 (dependencies, devDependencies)
 #### 
@@ -8494,17 +7642,6 @@ Next-generation ES module bundler
 
 Utility method to run function either synchronously or asynchronously using the common `this.async()` style.
 
-<a name="run-exclusive"></a>
-### <a href="https://github.com/garronej/run_exclusive">run-exclusive</a> v2.2.19 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Generate functions that do not allow parallel executions
-
 <a name="run-parallel"></a>
 ### <a href="https://github.com/feross/run-parallel">run-parallel</a> v1.2.0 (dependencies, devDependencies)
 #### 
@@ -8561,7 +7698,7 @@ Modern Buffer API polyfill without footguns
 An evented streaming XML parser in JavaScript
 
 <a name="scheduler"></a>
-### <a href="https://react.dev/">scheduler</a> v0.25.0-rc-83825814-20241015 (dependencies)
+### <a href="https://react.dev/">scheduler</a> v0.25.0-rc-4d577fd2-20241104 (dependencies)
 #### 
 
 ##### Paths
@@ -8747,39 +7884,6 @@ Simply swizzle your arguments
 
 ANSI escape codes for some terminal swag
 
-<a name="slug"></a>
-### <a href="https://github.com/Trott/slug">slug</a> v6.1.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-slugifies even utf-8 chars!
-
-<a name="socket.io-client"></a>
-### socket.io-client v4.7.5 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Realtime application framework client
-
-<a name="socket.io-parser"></a>
-### socket.io-parser v4.2.4 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-socket.io protocol parser
-
 <a name="source-map"></a>
 ### <a href="https://github.com/mozilla/source-map">source-map</a> v0.6.1 (dependencies, devDependencies)
 #### 
@@ -8857,17 +7961,6 @@ Svelte stale while revalidate (SWR) data fetching strategy
 
 Parses every stack trace into a nicely formatted array of hashes.
 
-<a name="statuses"></a>
-### statuses v2.0.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-HTTP status utility
-
 <a name="stream-buffers"></a>
 ### stream-buffers v2.2.0 (dependencies)
 #### 
@@ -8889,17 +7982,6 @@ Buffer-backed Streams for reading and writing.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Streaming Boyer-Moore-Horspool searching for node.js
-
-<a name="strict-event-emitter"></a>
-### strict-event-emitter v0.5.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Type-safe implementation of EventEmitter for browser and Node.js
 
 <a name="string-width"></a>
 ### string-width v2.1.1 (dependencies)
@@ -9022,17 +8104,6 @@ Full CSS support for JSX without compromises
 
 Super-fast alternative to Babel for when you can target modern JS runtimes
 
-<a name="superjson"></a>
-### superjson v2.2.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-
-
 <a name="supports-color"></a>
 ### supports-color v5.5.0 (dependencies)
 #### 
@@ -9065,17 +8136,6 @@ Detect whether a terminal supports color
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Detect whether a terminal supports color
-
-<a name="supports-hyperlinks"></a>
-### supports-hyperlinks v2.3.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Detect if your terminal emulator supports hyperlinks
 
 <a name="supports-preserve-symlinks-flag"></a>
 ### <a href="https://github.com/inspect-js/node-supports-preserve-symlinks-flag#readme">supports-preserve-symlinks-flag</a> v1.0.0 (dependencies, devDependencies)
@@ -9175,17 +8235,6 @@ A Tailwind CSS plugin for creating beautiful animations.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Just a little module for plugins.
-
-<a name="terminal-link"></a>
-### terminal-link v3.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Create clickable links in the terminal
 
 <a name="terser"></a>
 ### <a href="https://terser.org">terser</a> v5.31.6 (dependencies)
@@ -9297,17 +8346,6 @@ Force V8 to use fast properties for an object
 
 Pass two numbers, get a regex-compatible source string for matching ranges. Validated against more than 2.78 million test assertions.
 
-<a name="tough-cookie"></a>
-### <a href="https://github.com/salesforce/tough-cookie">tough-cookie</a> v4.1.4 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/BSD-3-Clause">New BSD</a> permitted
-
-RFC6265 Cookies and Cookie Jar for node.js
-
 <a name="tr46"></a>
 ### <a href="https://github.com/Sebmaster/tr46.js#readme">tr46</a> v0.0.3 (dependencies)
 #### 
@@ -9363,17 +8401,6 @@ Runtime library to validate data against TypeScript interfaces
 
  The exhaustive Pattern Matching library for TypeScript.
 
-<a name="tsafe"></a>
-### <a href="https://github.com/garronej/tsafe">tsafe</a> v1.7.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-A collection of utilities to step up your TypeScript game
-
 <a name="tslib"></a>
 ### <a href="https://www.typescriptlang.org/">tslib</a> v1.14.1 (dependencies)
 #### 
@@ -9419,40 +8446,7 @@ Turborepo is a high-performance build system for JavaScript and TypeScript codeb
 The linux-64 binary for turbo, a monorepo build system.
 
 <a name="type-fest"></a>
-### type-fest v0.21.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-(MIT OR CC0-1.0) permitted
-
-A collection of essential TypeScript types
-
-<a name="type-fest"></a>
 ### type-fest v0.7.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-(MIT OR CC0-1.0) permitted
-
-A collection of essential TypeScript types
-
-<a name="type-fest"></a>
-### type-fest v1.4.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-(MIT OR CC0-1.0) permitted
-
-A collection of essential TypeScript types
-
-<a name="type-fest"></a>
-### type-fest v4.24.0 (dependencies)
 #### 
 
 ##### Paths
@@ -9516,28 +8510,6 @@ TypeScript is a language for application scale JavaScript development
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 Strictly typed EventTarget that directly extends EventTarget to function as a drop-in replacement. It works with all Event-Types and accounts for basically no additional bundle-size.
-
-<a name="ulid"></a>
-### <a href="https://github.com/ulid/javascript#readme">ulid</a> v2.3.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-A universally-unique, lexicographically-sortable, identifier generator
-
-<a name="ulidx"></a>
-### <a href="https://github.com/perry-mitchell/ulidx#readme">ulidx</a> v2.4.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-ULID generator for NodeJS and the browser
 
 <a name="undici"></a>
 ### <a href="https://undici.nodejs.org">undici</a> v5.28.4 (dependencies)
@@ -9638,17 +8610,6 @@ unist utility to visit nodes
 
 unist utility to recursively walk over nodes, with ancestral information
 
-<a name="universalify"></a>
-### <a href="https://github.com/RyanZim/universalify#readme">universalify</a> v0.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Make a callback- or promise-based function support both promises and callbacks.
-
 <a name="unplugin"></a>
 ### unplugin v1.0.1 (dependencies)
 #### 
@@ -9692,17 +8653,6 @@ CLI tool to update caniuse-lite to refresh target browsers from Browserslist con
 <a href="http://opensource.org/licenses/bsd-license">Simplified BSD</a> permitted
 
 An RFC 3986/3987 compliant, scheme extendable URI/IRI parsing/validating/resolving library for JavaScript.
-
-<a name="url-parse"></a>
-### url-parse v1.5.10 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Small footprint URL parser that works seamlessly across Node.js and browser environments
 
 <a name="use-callback-ref"></a>
 ### use-callback-ref v1.3.2 (dependencies)
@@ -9925,17 +8875,6 @@ An implementation of the WHATWG URL Standard's URL API and parsing machinery
 Like which(1) unix command. Find the first instance of an executable in the PATH.
 
 <a name="wrap-ansi"></a>
-### wrap-ansi v6.2.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Wordwrap a string with ANSI escape codes
-
-<a name="wrap-ansi"></a>
 ### wrap-ansi v7.0.0 (dependencies, devDependencies)
 #### 
 
@@ -9967,17 +8906,6 @@ Wordwrap a string with ANSI escape codes
 <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
 
 Callback wrapping utility
-
-<a name="ws"></a>
-### <a href="https://github.com/websockets/ws">ws</a> v8.17.1 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Simple to use, blazing fast and thoroughly tested websocket client and server for Node.js
 
 <a name="ws"></a>
 ### <a href="https://github.com/websockets/ws">ws</a> v8.18.0 (dependencies)
@@ -10022,17 +8950,6 @@ A convertor between XML text and Javascript object / JSON text.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
 
 An XML builder for node.js
-
-<a name="xmlhttprequest-ssl"></a>
-### xmlhttprequest-ssl v2.0.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-XMLHttpRequest for Node
 
 <a name="xtend"></a>
 ### <a href="https://github.com/Raynos/xtend">xtend</a> v4.0.2 (dependencies)
@@ -10133,28 +9050,6 @@ the mighty option parser used by yargs
 
 Tiny queue data structure
 
-<a name="yoctocolors-cjs"></a>
-### yoctocolors-cjs v2.1.2 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-CommonJS version - The smallest and fastest command-line coloring package on the internet
-
-<a name="zod"></a>
-### <a href="https://zod.dev">zod</a> v3.22.3 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-TypeScript-first schema declaration and validation library with static type inference
-
 <a name="zod"></a>
 ### <a href="https://zod.dev">zod</a> v3.23.8 (dependencies)
 #### 
@@ -10166,17 +9061,6 @@ TypeScript-first schema declaration and validation library with static type infe
 
 TypeScript-first schema declaration and validation library with static type inference
 
-<a name="zod-error"></a>
-### <a href="https://github.com/andrewvo89/zod-error">zod-error</a> v1.5.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Utilities to format and customize Zod error messages
-
 <a name="zod-to-json-schema"></a>
 ### zod-to-json-schema v3.23.2 (dependencies)
 #### 
@@ -10187,17 +9071,6 @@ Utilities to format and customize Zod error messages
 <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> permitted
 
 Converts Zod schemas to Json Schemas
-
-<a name="zod-validation-error"></a>
-### zod-validation-error v1.5.0 (dependencies)
-#### 
-
-##### Paths
-* /home/runner/work/giselle/giselle
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> permitted
-
-Wrap zod validation errors in user-friendly readable messages
 
 <a name="zustand"></a>
 ### <a href="https://github.com/pmndrs/zustand">zustand</a> v4.5.5 (dependencies)

@@ -1,6 +1,6 @@
 import type { Artifact } from "../artifact/types";
 import type { ConnectorObject } from "../connector/types";
-import type { Flow } from "../flow/types";
+import type { Flow, FlowIndex } from "../flow/types";
 import type { GiselleNode } from "../giselle-node/types";
 import type { ReactFlowEdge, ReactFlowNode } from "../react-flow-adapter/types";
 import type { AgentId } from "../types";
@@ -24,9 +24,10 @@ export type Graph = {
 	artifacts: Artifact[];
 	webSearches: WebSearch[];
 	mode: PlaygroundMode;
-	flow?: Flow | null | undefined;
+	flowIndexes: FlowIndex[];
 };
 
 export type GraphState = {
 	graph: Graph;
+	flow?: Flow | undefined | null;
 };

@@ -20,6 +20,10 @@ import {
 } from "./beta-proto/react-flow-adapter/types";
 import type { AgentId } from "./beta-proto/types";
 
+// Extend the max duration of the server actions from this page to 5 minutes
+// https://vercel.com/docs/functions/runtimes#max-duration
+export const maxDuration = 300;
+
 function graphToReactFlow(grpah: Graph) {
 	const nodes: ReactFlowNode[] = grpah.nodes.map((node) => {
 		return {
@@ -58,6 +62,7 @@ async function getAgent(agentId: AgentId) {
 		graphv2: {
 			...agent.graphv2,
 			xyFlow,
+			flowIndexes: [],
 		},
 	};
 }

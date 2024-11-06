@@ -1,159 +1,198 @@
 "use server";
 
 import { agents, db } from "@/drizzle";
+import { openai } from "@ai-sdk/openai";
+import { put } from "@vercel/blob";
+import { createStreamableValue } from "ai/rsc";
 import { eq } from "drizzle-orm";
-import type { Artifact } from "../artifact/types";
-import { type StructuredData, fileStatuses } from "../files/types";
-import {
-	giselleNodeArchetypes,
-	textGeneratorParameterNames,
-} from "../giselle-node/blueprints";
-import {
-	type GiselleNode,
-	type GiselleNodeId,
-	giselleNodeCategories,
-} from "../giselle-node/types";
-import type { Graph } from "../graph/types";
-import type { TextContent } from "../text-content/types";
+import { giselleNodeArchetypes } from "../giselle-node/blueprints";
+import type { GiselleNodeId } from "../giselle-node/types";
 import type { AgentId } from "../types";
+import { type V2FlowAction, setFlow, updateStep } from "./action";
 import {
-	type WebSearchItem,
-	type WebSearchItemReference,
-	webSearchItemStatus,
-	webSearchStatus,
-} from "../web-search/types";
+	buildTextArtifact,
+	generateArtifactObject,
+} from "./server-actions/generate-text";
+import {
+	buildWebSearchArtifact,
+	generateWebSearchArtifactObject,
+} from "./server-actions/websearch";
+import {
+	type Flow,
+	type GenerateResult,
+	flowStatuses,
+	stepStatuses,
+} from "./types";
+import { buildFlow, buildGenerateResult, buildGeneratorNode } from "./utils";
 
-type Source = Artifact | TextContent | StructuredData | WebSearchItem;
-interface GatherInstructionSourcesInput {
-	node: GiselleNode;
-	graph: Graph;
-}
-async function gatherInstructionSources(input: GatherInstructionSourcesInput) {
-	if (!Array.isArray(input.node.properties.sources)) {
-		return [];
-	}
-	const instructionSources: Source[] = [];
-	for (const source of input.node.properties.sources) {
-		if (
-			typeof source !== "object" ||
-			source === null ||
-			typeof source.id !== "string" ||
-			typeof source.object !== "string"
-		) {
-			continue;
+export async function executeFlow(
+	agentId: AgentId,
+	finalNodeId: GiselleNodeId,
+) {
+	const stream = createStreamableValue<V2FlowAction>();
+	(async () => {
+		const agent = await db.query.agents.findFirst({
+			where: eq(agents.id, agentId),
+		});
+		if (agent === undefined) {
+			throw new Error(`Agent with id ${agentId} not found`);
 		}
-		if (source.object === "textContent") {
-			instructionSources.push(source);
-		} else if (source.object === "artifact.reference") {
-			const artifact = input.graph.artifacts.find(
-				(artifact) => artifact.id === source.id,
-			);
-			if (artifact !== undefined) {
-				instructionSources.push(artifact);
-			}
-		} else if (source.object === "file") {
-			if (
-				typeof source.status === "string" &&
-				source.status === fileStatuses.processed &&
-				typeof source.structuredDataBlobUrl === "string" &&
-				typeof source.name === "string"
-			) {
-				const structuredData = await fetch(source.structuredDataBlobUrl).then(
-					(res) => res.text(),
-				);
-				instructionSources.push({
-					id: source.id,
-					object: "file",
-					title: source.name,
-					content: structuredData,
-				});
-			}
-		} else if (source.object === "webSearch") {
-			if (
-				typeof source.status === "string" &&
-				source.status === webSearchStatus.completed &&
-				Array.isArray(source.items)
-			) {
-				await Promise.all(
-					(source.items as WebSearchItemReference[]).map(async (item) => {
-						if (item.status === webSearchItemStatus.completed) {
-							const webSearchData = await fetch(item.contentBlobUrl).then(
-								(res) => res.text(),
-							);
-							instructionSources.push({
-								id: item.id,
-								object: "webSearch.item",
-								url: item.url,
-								title: item.title,
-								content: webSearchData,
-								relevance: item.relevance,
-							});
-						}
-					}),
-				);
-			}
-		}
-	}
-	return instructionSources;
-}
-
-interface RunActionInput {
-	agentId: AgentId;
-	nodeId: GiselleNodeId;
-}
-export async function runAction(input: RunActionInput) {
-	const agent = await db.query.agents.findFirst({
-		where: eq(agents.id, input.agentId),
-	});
-	if (agent === undefined) {
-		throw new Error(`Agent with id ${input.agentId} not found`);
-	}
-	const graph = agent.graphv2;
-
-	const instructionConnector = graph.connectors.find(
-		(connector) =>
-			connector.target === input.nodeId &&
-			connector.sourceNodeCategory === giselleNodeCategories.instruction,
-	);
-
-	if (instructionConnector === undefined) {
-		throw new Error(`No instruction connector found for node ${input.nodeId}`);
-	}
-
-	const instructionNode = graph.nodes.find(
-		(node) => node.id === instructionConnector.source,
-	);
-	const actionNode = graph.nodes.find(
-		(node) => node.id === instructionConnector.target,
-	);
-
-	if (instructionNode === undefined || actionNode === undefined) {
-		throw new Error(
-			`Instruction node ${instructionConnector.source} or action node ${instructionConnector.target} not found`,
+		const graph = agent.graphv2;
+		const flow = await buildFlow({
+			input: {
+				agentId: graph.agentId,
+				finalNodeId: finalNodeId,
+				graph: graph,
+			},
+		});
+		const flowBlob = await putFlow({ input: { flow } });
+		stream.update(
+			setFlow({
+				input: {
+					flow: {
+						...flow,
+						status: flowStatuses.queued,
+						dataUrl: flowBlob.url,
+					},
+				},
+			}),
 		);
-	}
+		const generateResults: GenerateResult[] = [];
+		for (const job of flow.jobs) {
+			await Promise.all(
+				job.steps.map(async (step) => {
+					stream.update(
+						updateStep({
+							input: { stepId: step.id, status: stepStatuses.running },
+						}),
+					);
+					const stepNode = graph.nodes.find((node) => node.id === step.nodeId);
+					if (stepNode === undefined) {
+						return;
+					}
+					const relevanceResults = step.sourceNodeIds
+						.map((sourceNodeId) => {
+							const sourceArtifact = generateResults.find(
+								(generateResult) =>
+									generateResult.generator.nodeId === sourceNodeId,
+							);
+							/** @todo log warning */
+							if (sourceArtifact === undefined) {
+								return null;
+							}
+							return sourceArtifact;
+						})
+						.filter((sourceArtifact) => sourceArtifact !== null);
+					switch (step.action) {
+						case giselleNodeArchetypes.textGenerator: {
+							const artifactObject = await generateArtifactObject({
+								input: {
+									prompt: step.prompt,
+									model: openai("gpt-4o-mini"),
+									sources: [
+										...step.sources,
+										...relevanceResults.map((result) => result.artifact),
+									],
+								},
+								options: {
+									onStreamPartialObject: (object) => {
+										stream.update(
+											updateStep({
+												input: {
+													stepId: step.id,
+													status: stepStatuses.streaming,
+													output: buildTextArtifact({
+														title: object.title ?? "",
+														content: object.content ?? "",
+													}),
+												},
+											}),
+										);
+									},
+								},
+							});
+							generateResults.push(
+								buildGenerateResult({
+									generator: buildGeneratorNode({
+										nodeId: stepNode.id,
+										archetype: stepNode.archetype,
+										name: stepNode.name,
+									}),
+									artifact: buildTextArtifact({
+										title: artifactObject.artifact.title,
+										content: artifactObject.artifact.content,
+									}),
+								}),
+							);
+							break;
+						}
+						case giselleNodeArchetypes.webSearch: {
+							const webSearchArtifact = await generateWebSearchArtifactObject({
+								input: {
+									prompt: step.prompt,
+									sources: [
+										...step.sources,
+										...relevanceResults.map((result) => result.artifact),
+									],
+								},
+								options: {
+									onStreamPartialObject: (object) => {
+										stream.update(
+											updateStep({
+												input: {
+													stepId: step.id,
+													status: stepStatuses.streaming,
+													output: buildWebSearchArtifact({
+														keywords: object.keywords ?? [],
+														scrapingTasks: object.scrapingTasks ?? [],
+													}),
+												},
+											}),
+										);
+									},
+								},
+							});
+							generateResults.push(
+								buildGenerateResult({
+									generator: buildGeneratorNode({
+										nodeId: stepNode.id,
+										archetype: stepNode.archetype,
+										name: stepNode.name,
+									}),
+									artifact: buildWebSearchArtifact({
+										keywords: webSearchArtifact.keywords,
+										scrapingTasks: webSearchArtifact.scrapingTasks,
+									}),
+								}),
+							);
+							break;
+						}
+					}
+					stream.update(
+						updateStep({
+							input: { stepId: step.id, status: stepStatuses.completed },
+						}),
+					);
+				}),
+			);
+		}
+		stream.done();
+	})();
 
-	const sources = await gatherInstructionSources({
-		node: instructionNode,
-		graph,
-	});
-
-	switch (instructionConnector.targetNodeArcheType) {
-		case giselleNodeArchetypes.textGenerator:
-			await generateText();
-			break;
-		case giselleNodeArchetypes.webSearch:
-			await webSearch();
-			break;
-	}
+	return { streamableValue: stream.value };
 }
 
-async function generateText() {
-	console.log(
-		"\x1b[33m\x1b[1mTODO:\x1b[0m Implement text generation functionality",
+interface PutFlowInput {
+	flow: Flow;
+}
+export async function putFlow({ input }: { input: PutFlowInput }) {
+	const blob = await put(
+		`/flows/${input.flow.id}/flow.json`,
+		JSON.stringify(input.flow),
+		{
+			access: "public",
+			contentType: "application/json",
+		},
 	);
-}
-
-async function webSearch() {
-	console.log("\x1b[33m\x1b[1mTODO:\x1b[0m Implement websearch functionality");
+	return blob;
 }

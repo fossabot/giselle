@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { SparklesIcon } from "../../components/icons/sparkles";
 import type { GiselleNode } from "../../giselle-node/types";
 import { useGraph } from "../../graph/context";
-import { runFlow } from "../composite-actions";
+import { executeFlow } from "../composite-actions";
 
 interface RunButtonInnerProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -34,7 +34,7 @@ export function RunButton() {
 	const { state, dispatch } = useGraph();
 	const finalNodes = state.graph.nodes.filter((node) => node.isFinal);
 	const handleClickRunButton = (node: GiselleNode) => {
-		dispatch(runFlow(node));
+		dispatch(executeFlow(node));
 	};
 	if (finalNodes.length === 1) {
 		return (

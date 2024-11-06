@@ -35,7 +35,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<GoogleTagManager gtmId={process.env.GTM_ID ?? ""} />
 
 			<body className={`${rosart.variable} font-sans`}>

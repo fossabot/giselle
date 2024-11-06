@@ -66,7 +66,7 @@ ${sourcesToText(sources)}
 	const stream = createStreamableValue();
 
 	(async () => {
-		const model = "gpt-4o";
+		const model = "gpt-4o-mini";
 		const generation = trace.generation({
 			input: inputs.userPrompt,
 			model,
@@ -101,7 +101,9 @@ ${sourcesToText(sources)}
 
 		const searchResults = await Promise.all(
 			result.keywords.map((keyword) => search(keyword)),
-		).then((results) => [...new Set(results.flat())]);
+		)
+			.then((results) => [...new Set(results.flat())])
+			.then((results) => results.sort((a, b) => b.score - a.score).slice(0, 2));
 
 		const webSearch: WebSearch = {
 			id: `wbs_${createId()}`,

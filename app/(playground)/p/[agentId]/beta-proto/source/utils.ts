@@ -112,15 +112,28 @@ ${sources
 		)
 		.join("\n")}
 </WebSearch>`
-			: source.object === "artifact" ||
-					source.object === "file" ||
-					source.object === "textContent"
+			: source.object === "artifact.webSearch"
 				? `
+<WebSearch id="${source.id}">
+  ${source.scrapingTasks
+		.filter((scrapingTask) => scrapingTask.state === "completed")
+		.map(
+			(scrapingTask) => `
+  <WebPage title="${scrapingTask.title}" rel="${scrapingTask.url}" id="${scrapingTask.id}">
+    ${scrapingTask.content}
+  </WebPage>`,
+		)
+		.join("\n")}
+</WebSearch>`
+				: source.object === "artifact" ||
+						source.object === "file" ||
+						source.object === "textContent"
+					? `
 <Source title="${source.title}" type="${source.object}" id="${source.id}">
   ${source.content}
 </Source>
 `
-				: "",
+					: "",
 	)
 	.join("\n")}`;
 }
@@ -176,7 +189,7 @@ export function extractSourceIndexesFromNode(node: GiselleNode): SourceIndex[] {
 				if (
 					typeof source.status !== "string" ||
 					source.status !== webSearchStatus.completed ||
-					Array.isArray(source.items)
+					!Array.isArray(source.items)
 				) {
 					return null;
 				}

@@ -1,5 +1,6 @@
 import type { Artifact, ArtifactReference } from "../artifact/types";
 import type { GiselleFile, StructuredData } from "../files/types";
+import type { WebSearchArtifact } from "../flow/server-actions/websearch";
 import type { GiselleNodeWebSearchElement } from "../giselle-node/types";
 import type { TextContent } from "../text-content/types";
 import type {
@@ -21,4 +22,9 @@ export interface WebSearch {
 	items: WebSearchItem[];
 	generatorNode: GiselleNodeWebSearchElement;
 }
-export type Source = Artifact | WebSearch | StructuredData | TextContent;
+export type Source =
+	| Artifact
+	| WebSearch
+	| StructuredData
+	| TextContent
+	| WebSearchArtifact;

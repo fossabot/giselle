@@ -11,7 +11,6 @@ export type Artifact = {
 	title: string;
 	content: string;
 	generatorNode: GiselleNodeArtifactElement;
-	elements: ArtifactElement[];
 };
 export type ArtifactReference = {
 	id: ArtifactId;

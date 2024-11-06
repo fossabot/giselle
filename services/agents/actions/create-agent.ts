@@ -26,6 +26,7 @@ export const createAgent = async (args: CreateAgentArgs) => {
 			artifacts: [],
 			webSearches: [],
 			mode: playgroundModes.edit,
+			flowIndexes: [],
 		},
 	});
 	revalidateGetAgents({

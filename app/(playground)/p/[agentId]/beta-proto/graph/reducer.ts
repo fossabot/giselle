@@ -1,5 +1,10 @@
 import { isV2ConnectorAction, v2ConnectorReducer } from "../connector/actions";
-import { isV2FlowAction, v2FlowReducer } from "../flow/action";
+import {
+	isV2FlowAction,
+	isV2FlowIndexAction,
+	v2FlowIndexReducer,
+	v2FlowReducer,
+} from "../flow/action";
 import { isV2NodeAction, v2NodeReducer } from "../giselle-node/actions";
 import type { GraphAction } from "./actions";
 import type { GraphState } from "./types";
@@ -28,12 +33,12 @@ export const graphReducer = (
 			},
 		};
 	}
-	if (isV2FlowAction(action)) {
+	if (isV2FlowIndexAction(action)) {
 		return {
 			...state,
 			graph: {
 				...state.graph,
-				flow: v2FlowReducer(state.graph.flow, action),
+				flowIndexes: v2FlowIndexReducer(state.graph.flowIndexes, action),
 			},
 		};
 	}
@@ -53,6 +58,12 @@ export const graphReducer = (
 				...state.graph,
 				connectors: v2ConnectorReducer(state.graph.connectors, action),
 			},
+		};
+	}
+	if (isV2FlowAction(action)) {
+		return {
+			...state,
+			flow: v2FlowReducer(state.flow, action),
 		};
 	}
 	switch (action.type) {
