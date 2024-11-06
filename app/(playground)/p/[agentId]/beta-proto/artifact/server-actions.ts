@@ -85,7 +85,6 @@ ${sourcesToText(sources)}
 		});
 
 		for await (const partialObject of partialObjectStream) {
-			console.log("partialObject envirenment: ", process.env.NEXT_RUNTIME);
 			stream.update(partialObject);
 		}
 
