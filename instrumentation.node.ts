@@ -1,4 +1,3 @@
-import { setTelemetryState } from "@/lib/telemetry";
 import { DiagConsoleLogger, DiagLogLevel, diag } from "@opentelemetry/api";
 import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -74,17 +73,8 @@ function initializeOtelSDK() {
 	});
 
 	sdk.start();
-	const logger = loggerProvider.getLogger("giselle");
 	diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 	console.log("-- OTEL registered with metrics, traces, and logs --");
-
-	// テレメトリーの状態を保存
-	setTelemetryState({
-		metricReader,
-		loggerProvider,
-		spanProcessor,
-		logger,
-	});
 }
 
 // instrumentationのエントリーポイントで初期化を実行

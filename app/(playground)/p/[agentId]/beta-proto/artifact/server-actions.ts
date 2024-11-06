@@ -5,7 +5,6 @@ import { streamObject } from "ai";
 import { createStreamableValue } from "ai/rsc";
 
 import { getUserSubscriptionId, isRoute06User } from "@/app/(auth)/lib";
-import { flushTelemetry } from "@/lib/telemetry";
 import { metrics } from "@opentelemetry/api";
 import { waitUntil } from "@vercel/functions";
 import { Langfuse } from "langfuse";
@@ -80,7 +79,7 @@ ${sourcesToText(sources)}
 				});
 				await lf.shutdownAsync();
 
-				await waitUntil(flushTelemetry());
+				waitUntil(new Promise((resolve) => setTimeout(resolve, 14000)));
 			},
 		});
 
