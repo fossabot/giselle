@@ -1,3 +1,4 @@
+import { setTelemetryState } from "@/lib/telemetry";
 import { DiagConsoleLogger, DiagLogLevel, diag } from "@opentelemetry/api";
 import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -18,110 +19,72 @@ import {
 import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-node";
 import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
 
-const headers = {
-	"signoz-access-token": process.env.SIGNOZ_INGESTION_TOKEN,
-};
+// SDK初期化関数
+function initializeOtelSDK() {
+	console.log("Initializing OTEL SDK------------------------");
 
-// Metric Exporter
-const metricExporter = new OTLPMetricExporter({
-	url: "https://ingest.us.signoz.cloud:443/v1/metrics",
-	headers,
-});
+	const headers = {
+		"signoz-access-token": process.env.SIGNOZ_INGESTION_TOKEN,
+	};
 
-export const metricReader = new PeriodicExportingMetricReader({
-	exporter: metricExporter,
-	exportIntervalMillis: 10000,
-});
+	// Metric Exporter
+	const metricExporter = new OTLPMetricExporter({
+		url: "https://ingest.us.signoz.cloud:443/v1/metrics",
+		headers,
+	});
 
-// Trace Exporter
-const traceExporter = new OTLPTraceExporter({
-	url: "https://ingest.us.signoz.cloud:443/v1/traces",
-	headers,
-});
+	const metricReader = new PeriodicExportingMetricReader({
+		exporter: metricExporter,
+		exportIntervalMillis: 10000,
+	});
 
-const spanProcessor = new BatchSpanProcessor(traceExporter);
+	// Trace Exporter
+	const traceExporter = new OTLPTraceExporter({
+		url: "https://ingest.us.signoz.cloud:443/v1/traces",
+		headers,
+	});
 
-// For debug purposes, you can also use SimpleSpanProcessor with ConsoleSpanExporter
-const debugSpanProcessor = new SimpleSpanProcessor(new ConsoleSpanExporter());
+	const spanProcessor = new BatchSpanProcessor(traceExporter);
+	const debugSpanProcessor = new SimpleSpanProcessor(new ConsoleSpanExporter());
 
-// Log Exporter
-const logExporter = new OTLPLogExporter({
-	url: "https://ingest.us.signoz.cloud:443/v1/logs",
-	headers,
-});
+	// Log Exporter
+	const logExporter = new OTLPLogExporter({
+		url: "https://ingest.us.signoz.cloud:443/v1/logs",
+		headers,
+	});
 
-export const loggerProvider = new LoggerProvider();
-loggerProvider.addLogRecordProcessor(new BatchLogRecordProcessor(logExporter));
-
-// Only add ConsoleLogRecordExporter in development
-if (process.env.NODE_ENV !== "production") {
+	const loggerProvider = new LoggerProvider();
+	loggerProvider.addLogRecordProcessor(
+		new BatchLogRecordProcessor(logExporter),
+	);
 	loggerProvider.addLogRecordProcessor(
 		new BatchLogRecordProcessor(new ConsoleLogRecordExporter()),
 	);
+
+	const sdk = new NodeSDK({
+		resource: new Resource({
+			[SemanticResourceAttributes.SERVICE_NAME]: "giselle",
+			environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
+		}),
+		metricReader,
+		spanProcessors: [spanProcessor, debugSpanProcessor],
+		traceExporter,
+		logRecordProcessor: new BatchLogRecordProcessor(logExporter),
+	});
+
+	sdk.start();
+	const logger = loggerProvider.getLogger("giselle");
+	diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+	console.log("-- OTEL registered with metrics, traces, and logs --");
+
+	// テレメトリーの状態を保存
+	setTelemetryState({
+		metricReader,
+		loggerProvider,
+		spanProcessor,
+		logger,
+	});
 }
 
-const logRecordProcessor = new BatchLogRecordProcessor(logExporter);
-loggerProvider.addLogRecordProcessor(logRecordProcessor);
-
-const sdk: NodeSDK | null = null;
-
-export function initializeOtelSDK() {
-	if (!sdk) {
-		const sdk = new NodeSDK({
-			resource: new Resource({
-				[SemanticResourceAttributes.SERVICE_NAME]: "giselle",
-				environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
-			}),
-			metricReader: metricReader,
-			spanProcessors: [spanProcessor, debugSpanProcessor],
-			traceExporter: traceExporter,
-			logRecordProcessor: logRecordProcessor,
-		});
-		sdk.start();
-		console.log("-- OTEL registered with metrics, traces, and logs --");
-	}
-}
-
+// instrumentationのエントリーポイントで初期化を実行
 initializeOtelSDK();
-
-export const logger = loggerProvider.getLogger("giselle");
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
-
-export function log(
-	severity: SeverityNumber,
-	message: string,
-	attributes?: Record<string, string>,
-) {
-	const consoleMethod =
-		severity <= SeverityNumber.INFO ? console.log : console.error;
-	consoleMethod(message, attributes);
-
-	logger.emit({ severityNumber: severity, body: message, attributes });
-}
-
-export async function flushTelemetry() {
-	try {
-		log(SeverityNumber.INFO, "Exporting telemetry data", {
-			runtime: process.env.NEXT_RUNTIME ?? "",
-			environment: process.env.VERCEL_ENV ?? "",
-		});
-
-		await Promise.all([
-			metricReader.forceFlush(),
-			loggerProvider.forceFlush(),
-			spanProcessor.forceFlush(),
-		]);
-
-		log(SeverityNumber.INFO, "flushTelemetry() completed", {
-			runtime: process.env.NEXT_RUNTIME ?? "",
-			environment: process.env.VERCEL_ENV ?? "",
-		});
-	} catch (error) {
-		log(SeverityNumber.ERROR, "Error in flushTelemetry():", {
-			error: error instanceof Error ? error.message : String(error),
-			runtime: process.env.NEXT_RUNTIME ?? "",
-			environment: process.env.VERCEL_ENV ?? "",
-		});
-		throw error;
-	}
-}

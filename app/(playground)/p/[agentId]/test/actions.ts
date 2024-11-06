@@ -1,5 +1,5 @@
 "use server";
-import { logger } from "@/instrumentation.node";
+import { log } from "@/lib/telemetry";
 import {
 	DiagConsoleLogger,
 	DiagLogLevel,
@@ -20,20 +20,6 @@ const counter = meter.createCounter("function_call", {
 type AttributeValue = string | number | boolean | AttributeObject;
 interface AttributeObject {
 	[key: string]: AttributeValue;
-}
-
-function log(
-	severity: SeverityNumber,
-	message: string,
-	attributes?: Record<string, AttributeValue>,
-) {
-	// Log to console
-	const consoleMethod =
-		severity <= SeverityNumber.INFO ? console.log : console.error;
-	consoleMethod(message, attributes);
-
-	// Log to OpenTelemetry
-	logger.emit({ severityNumber: severity, body: message, attributes });
 }
 
 export async function async_counter() {
