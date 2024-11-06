@@ -1,5 +1,5 @@
 "use server";
-import { logger, loggerProvider, metricReader } from "@/instrumentation";
+import { logger } from "@/instrumentation.node";
 import {
 	DiagConsoleLogger,
 	DiagLogLevel,
@@ -7,7 +7,6 @@ import {
 	metrics,
 } from "@opentelemetry/api";
 import { SeverityNumber, logs } from "@opentelemetry/api-logs";
-import { waitUntil } from "@vercel/functions";
 
 // Enable debug logging for OpenTelemetry
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);

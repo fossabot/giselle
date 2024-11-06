@@ -1,3 +1,5 @@
+import { DiagConsoleLogger, DiagLogLevel, diag } from "@opentelemetry/api";
+import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
 import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-http";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
@@ -61,17 +63,65 @@ if (process.env.NODE_ENV !== "production") {
 const logRecordProcessor = new BatchLogRecordProcessor(logExporter);
 loggerProvider.addLogRecordProcessor(logRecordProcessor);
 
-const sdk = new NodeSDK({
-	resource: new Resource({
-		[SemanticResourceAttributes.SERVICE_NAME]: "giselle",
-		environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
-	}),
-	metricReader: metricReader,
-	spanProcessors: [spanProcessor, debugSpanProcessor],
-	traceExporter: traceExporter,
-	logRecordProcessor: logRecordProcessor,
-});
-sdk.start();
+const sdk: NodeSDK | null = null;
 
-console.log("-- OTEL registered with metrics, traces, and logs --");
+export function initializeOtelSDK() {
+	if (!sdk) {
+		const sdk = new NodeSDK({
+			resource: new Resource({
+				[SemanticResourceAttributes.SERVICE_NAME]: "giselle",
+				environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
+			}),
+			metricReader: metricReader,
+			spanProcessors: [spanProcessor, debugSpanProcessor],
+			traceExporter: traceExporter,
+			logRecordProcessor: logRecordProcessor,
+		});
+		sdk.start();
+		console.log("-- OTEL registered with metrics, traces, and logs --");
+	}
+}
 
+initializeOtelSDK();
+
+export const logger = loggerProvider.getLogger("giselle");
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
+export function log(
+	severity: SeverityNumber,
+	message: string,
+	attributes?: Record<string, string>,
+) {
+	const consoleMethod =
+		severity <= SeverityNumber.INFO ? console.log : console.error;
+	consoleMethod(message, attributes);
+
+	logger.emit({ severityNumber: severity, body: message, attributes });
+}
+
+export async function flushTelemetry() {
+	try {
+		log(SeverityNumber.INFO, "Exporting telemetry data", {
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+
+		await Promise.all([
+			metricReader.forceFlush(),
+			loggerProvider.forceFlush(),
+			spanProcessor.forceFlush(),
+		]);
+
+		log(SeverityNumber.INFO, "flushTelemetry() completed", {
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+	} catch (error) {
+		log(SeverityNumber.ERROR, "Error in flushTelemetry():", {
+			error: error instanceof Error ? error.message : String(error),
+			runtime: process.env.NEXT_RUNTIME ?? "",
+			environment: process.env.VERCEL_ENV ?? "",
+		});
+		throw error;
+	}
+}
