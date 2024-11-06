@@ -80,7 +80,7 @@ ${sourcesToText(sources)}
 				});
 				await lf.shutdownAsync();
 
-				waitUntil(flushTelemetry());
+				await waitUntil(flushTelemetry());
 			},
 		});
 
