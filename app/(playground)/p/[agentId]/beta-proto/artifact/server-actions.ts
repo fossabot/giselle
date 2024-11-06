@@ -5,12 +5,7 @@ import { streamObject } from "ai";
 import { createStreamableValue } from "ai/rsc";
 
 import { getUserSubscriptionId, isRoute06User } from "@/app/(auth)/lib";
-import {
-	flushTelemetry,
-	log,
-	loggerProvider,
-	metricReader,
-} from "@/instrumentation.node";
+import { flushTelemetry } from "@/instrumentation";
 import { metrics } from "@opentelemetry/api";
 import { waitUntil } from "@vercel/functions";
 import { Langfuse } from "langfuse";
