@@ -1,4 +1,12 @@
 import * as Sentry from "@sentry/nextjs";
+import { SeverityNumber } from "@opentelemetry/api-logs";
+import {
+	DiagConsoleLogger,
+	DiagLogLevel,
+	diag,
+	metrics,
+	trace,
+} from "@opentelemetry/api";
 
 export async function register() {
 	if (process.env.NEXT_RUNTIME === "nodejs") {
@@ -12,6 +20,9 @@ export async function register() {
 }
 
 export const onRequestError = Sentry.captureRequestError;
+
+export const logger = loggerProvider.getLogger("giselle");
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 export function log(
 	severity: SeverityNumber,
@@ -36,7 +47,6 @@ export async function flushTelemetry() {
 			metricReader.forceFlush(),
 			loggerProvider.forceFlush(),
 			spanProcessor.forceFlush(),
-			new Promise((resolve) => setTimeout(resolve, 10000)), // wait for exporting
 		]);
 
 		log(SeverityNumber.INFO, "flushTelemetry() completed", {

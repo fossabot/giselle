@@ -1,5 +1,5 @@
 "use server";
-import { logger, loggerProvider, metricReader } from "@/instrumentation.node";
+import { logger, loggerProvider, metricReader } from "@/instrumentation";
 import {
 	DiagConsoleLogger,
 	DiagLogLevel,

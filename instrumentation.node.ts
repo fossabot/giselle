@@ -1,11 +1,3 @@
-import {
-	DiagConsoleLogger,
-	DiagLogLevel,
-	diag,
-	metrics,
-	trace,
-} from "@opentelemetry/api";
-import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
 import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-http";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
@@ -81,7 +73,5 @@ const sdk = new NodeSDK({
 });
 sdk.start();
 
-export const logger = loggerProvider.getLogger("giselle");
 console.log("-- OTEL registered with metrics, traces, and logs --");
 
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
