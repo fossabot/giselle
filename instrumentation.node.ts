@@ -1,22 +1,19 @@
 import { DiagConsoleLogger, DiagLogLevel, diag } from "@opentelemetry/api";
-import { SeverityNumber } from "@opentelemetry/api-logs";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
 import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-http";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
-import { Resource } from "@opentelemetry/resources";
 import {
 	BatchLogRecordProcessor,
 	ConsoleLogRecordExporter,
 	LoggerProvider,
 } from "@opentelemetry/sdk-logs";
 import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
-import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
 	ConsoleSpanExporter,
 	SimpleSpanProcessor,
 } from "@opentelemetry/sdk-trace-base";
 import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-node";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { registerOTel } from "@vercel/otel";
 
 // SDK初期化関数
 function initializeOtelSDK() {
@@ -61,18 +58,13 @@ function initializeOtelSDK() {
 		new BatchLogRecordProcessor(new ConsoleLogRecordExporter()),
 	);
 
-	const sdk = new NodeSDK({
-		resource: new Resource({
-			[SemanticResourceAttributes.SERVICE_NAME]: "giselle",
-			environment: process.env.NEXT_PUBLIC_VERCEL_ENV || "not-set",
-		}),
+	registerOTel({
+		serviceName: "giselle",
 		metricReader,
 		spanProcessors: [spanProcessor, debugSpanProcessor],
 		traceExporter,
 		logRecordProcessor: new BatchLogRecordProcessor(logExporter),
 	});
-
-	sdk.start();
 	diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 	console.log("-- OTEL registered with metrics, traces, and logs --");
 }
