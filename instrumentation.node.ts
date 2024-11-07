@@ -8,11 +8,6 @@ import {
 	LoggerProvider,
 } from "@opentelemetry/sdk-logs";
 import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
-import {
-	ConsoleSpanExporter,
-	SimpleSpanProcessor,
-} from "@opentelemetry/sdk-trace-base";
-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-node";
 import { registerOTel } from "@vercel/otel";
 
 console.log("Initializing OTEL SDK------------------------");
@@ -39,9 +34,6 @@ const traceExporter = new OTLPTraceExporter({
 	headers,
 });
 
-const spanProcessor = new BatchSpanProcessor(traceExporter);
-const debugSpanProcessor = new SimpleSpanProcessor(new ConsoleSpanExporter());
-
 // Log Exporter
 const logExporter = new OTLPLogExporter({
 	url: "https://ingest.us.signoz.cloud:443/v1/logs",
@@ -57,7 +49,6 @@ loggerProvider.addLogRecordProcessor(
 registerOTel({
 	serviceName: "giselle",
 	metricReader,
-	spanProcessors: [spanProcessor, debugSpanProcessor],
 	traceExporter,
 	logRecordProcessor: new BatchLogRecordProcessor(logExporter),
 });
