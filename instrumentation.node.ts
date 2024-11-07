@@ -28,12 +28,6 @@ const metricReader = new PeriodicExportingMetricReader({
 	exportTimeoutMillis: 13000,
 });
 
-// Trace Exporter
-const traceExporter = new OTLPTraceExporter({
-	url: "https://ingest.us.signoz.cloud:443/v1/traces",
-	headers,
-});
-
 // Log Exporter
 const logExporter = new OTLPLogExporter({
 	url: "https://ingest.us.signoz.cloud:443/v1/logs",
@@ -49,7 +43,6 @@ loggerProvider.addLogRecordProcessor(
 registerOTel({
 	serviceName: "giselle",
 	metricReader,
-	traceExporter,
 	logRecordProcessor: new BatchLogRecordProcessor(logExporter),
 });
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
